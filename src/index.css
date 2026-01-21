@@ -277,3 +277,7 @@
   background: linear-gradient(135deg, #a259e2 0%, #ff1493 100%) !important;
   box-shadow: 0 8px 32px 0 rgba(162, 89, 226, 0.15), 0 1.5px 8px 0 rgba(255, 20, 147, 0.10);
 }
+
+.m-auto {
+  margin: auto;
+}

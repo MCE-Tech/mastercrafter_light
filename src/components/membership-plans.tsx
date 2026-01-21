@@ -30,7 +30,8 @@ export function MembershipPlans() {
               </Button>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-sm">
-                  <X className="h-4 w-4 text-red-500 shrink-0" />
+                  {/* <X className="h-4 w-4 text-red-500 shrink-0" /> */}
+                  <Check className="h-4 w-4 text-green-500 shrink-0" />
                   <span className="text-muted-foreground">Portfolio Creation (₹2,999 one-time)</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
@@ -39,7 +40,7 @@ export function MembershipPlans() {
                 </li>
                 <li className="flex items-center gap-2 text-sm">
                   <Check className="h-4 w-4 text-green-500 shrink-0" />
-                  <span>20-30% Commission Rate</span>
+                  <span>20-40% Commission Rate</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
                   <Check className="h-4 w-4 text-green-500 shrink-0" />
@@ -75,7 +76,7 @@ export function MembershipPlans() {
                 </li>
                 <li className="flex items-center gap-2 text-sm">
                   <Check className="h-4 w-4 text-green-500 shrink-0" />
-                  <span>15-20% Commission Rate</span>
+                  <span>15-30% Commission Rate</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
                   <Check className="h-4 w-4 text-green-500 shrink-0" />
@@ -111,7 +112,7 @@ export function MembershipPlans() {
                 </li>
                 <li className="flex items-center gap-2 text-sm">
                   <Check className="h-4 w-4 text-green-500 shrink-0" />
-                  <span>15-20% Commission Rate</span>
+                  <span>10-20% Commission Rate</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
                   <Check className="h-4 w-4 text-green-500 shrink-0" />

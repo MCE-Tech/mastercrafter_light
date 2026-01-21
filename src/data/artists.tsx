@@ -55,15 +55,15 @@ const artistsData = [
     verificationDate: "2025-09-20",
     introduction: (
       <>
-        <h2>About Gaurang Sahu</h2>
-        <p>Gaurang is a dynamic guitarist and composer, blending genres and captivating audiences with his technical skill and creativity.</p>
+        <p><b>Gaurang Sahu</b> is a self-taught <b>Indian flute artist</b> and multi-instrumentalist from Delhi with over 15 years of live performance experience. Famous for his <b>flute beatboxing</b> and rhythm-based fusion.<br/>
+        He has performed across <b>India and internationally</b> — from <b>Beijing</b> and <b>Xinxiang</b> to the grand stage of the <b>World Cultural Festival</b> alongside 1,000+ musicians. His talent has graced top venues, TEDx stages, weddings, and VIP gatherings for icons like <b>Padma Bhushan Pt. Debu Chaudhary</b> and <b>Governor Satya Pal Malik</b>.</p>
       </>
     ),
     whyBook: [
-      "Energetic and engaging live shows",
-      "Original compositions and arrangements",
-      "Highly skilled in multiple genres",
-      "Professional and reliable collaborator"
+      "Versatile live sets using flute, guitar, cajon, didgeridoo, beatboxing",
+      "Performs at weddings, cafés, restaurants, corporates, festivals",
+      "Delivers custom performances, production, and sound design",
+      "Passionate educator — has taught the flute to over 20 students"
     ]
   },
   {

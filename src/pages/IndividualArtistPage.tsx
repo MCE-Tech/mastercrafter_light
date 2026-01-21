@@ -20,7 +20,7 @@ export default function IndividualArtistPage() {
 
   return (
     <section className="py-12 md:py-16 lg:py-20 bg-background min-h-screen">
-      <div className="container px-2 md:px-4 max-w-6xl mx-auto">
+      <div className="container px-2 md:px-4 max-w-6xl mx-auto h-[8vh]">
         <div className="flex flex-col md:flex-row items-start gap-8 mb-10">
           {/* Left: Artist Image */}
           <div className="flex-shrink-0 w-full md:w-56 lg:w-72 text-center md:text-left">

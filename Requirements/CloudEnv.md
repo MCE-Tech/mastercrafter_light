@@ -1,0 +1,1 @@
+Review which cloud platform is best and should be used for our future development and permanent hosting.

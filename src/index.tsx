@@ -20,8 +20,8 @@ const router = createBrowserRouter(
       createRoutesFromElements(
             <Route path='' element={<App/>}>
                   <Route path='/' element={<HomePage/>}/>
-                  <Route path="/our-artists" element={<OurArtists />} />
-                  <Route path="/all-artists" element={<AllArtistsPage />} />
+                  <Route path="/our-artists" element={<AllArtistsPage />} />
+                  <Route path="/all-artists" element={<OurArtists />} />
                   <Route path="/artist/:name" element={<ArtistProfilePage />} />
                   <Route path="/services-for-artists" element={<ServicesForArtistsPage />} />
                   <Route path="/services-for-clients" element={<ServicesForClientsPage />} />
