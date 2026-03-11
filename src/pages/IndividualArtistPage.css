@@ -1,0 +1,82 @@
+:root{
+  --artist-card-w: 288px;
+  --artist-card-h: 288px;
+  --card-perspective: 1200px;
+  --card-transition: 600ms;
+}
+
+.artist-card{
+  width: var(--artist-card-w);
+  height: var(--artist-card-h);
+  perspective: var(--card-perspective);
+  -webkit-perspective: var(--card-perspective);
+  cursor: pointer;
+  outline: none;
+}
+
+.card-inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform var(--card-transition) cubic-bezier(.2,.8,.2,1);
+}
+
+.card-inner.is-flipped{
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+.card-face{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg, white);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.08);
+}
+
+.card-back{
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,250,250,0.95));
+}
+
+.artist-image{
+  width: calc(100% - 0px);
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Focus styles for keyboard users */
+.artist-card:focus{
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.18);
+  border-radius: 0.5rem;
+}
+
+/* 4K / very large displays */
+@media (min-width: 2560px){
+  :root{
+    --artist-card-w: 420px;
+    --artist-card-h: 420px;
+    --card-perspective: 2000px;
+    --card-transition: 500ms;
+  }
+}
+
+@media (min-width: 3840px){
+  :root{
+    --artist-card-w: 520px;
+    --artist-card-h: 520px;
+  }
+}

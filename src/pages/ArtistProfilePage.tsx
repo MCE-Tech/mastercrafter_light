@@ -18,6 +18,47 @@ function ArtistNotFound() {
     );
 }
 
+
+const parseYouTube = (raw?: string) => {
+    if (!raw) return { embedSrc: "", isPlaylist: false, playlistId: "" };
+    const value = String(raw).trim();
+
+    // playlist in URL or param
+    const listMatch = value.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+    if (listMatch) {
+        const playlistId = listMatch[1];
+        return {
+            embedSrc: `https://www.youtube.com/embed/videoseries?list=${playlistId}`,
+            isPlaylist: true,
+            playlistId,
+        };
+    }
+
+    // raw playlist id (common YouTube playlist ids start with PL)
+    if (/^PL[a-zA-Z0-9_-]+$/.test(value)) {
+        return {
+            embedSrc: `https://www.youtube.com/embed/videoseries?list=${value}`,
+            isPlaylist: true,
+            playlistId: value,
+        };
+    }
+
+    // youtu.be short link
+    const shortMatch = value.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+    if (shortMatch) return { embedSrc: `https://www.youtube.com/embed/${shortMatch[1]}`, isPlaylist: false, playlistId: "" };
+
+    // watch?v= style or embed with v= param
+    const watchMatch = value.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+    if (watchMatch) return { embedSrc: `https://www.youtube.com/embed/${watchMatch[1]}`, isPlaylist: false, playlistId: "" };
+
+    // plain 11-char id
+    if (/^[a-zA-Z0-9_-]{11}$/.test(value)) return { embedSrc: `https://www.youtube.com/embed/${value}`, isPlaylist: false, playlistId: "" };
+
+    // fallback: treat whole value as video id
+    return { embedSrc: `https://www.youtube.com/embed/${value}`, isPlaylist: false, playlistId: "" };
+};
+
+
 export default function ArtistProfilePage() {
     const { artist } = useArtist();
     const heroRef = useRef<HTMLDivElement>(null);
@@ -26,6 +67,8 @@ export default function ArtistProfilePage() {
     if (!artist) {
         return <ArtistNotFound />;
     }
+
+    const { embedSrc, isPlaylist, playlistId } = parseYouTube(artist.youtubeVideo && artist.youtubeVideo[0]);
 
     return (
         <div className="relative min-h-screen">
@@ -48,11 +91,19 @@ export default function ArtistProfilePage() {
                         <div className="mb-4">
                             <h2 className="text-2xl font-bold">Videos</h2>
                         </div>
-                        <PlaylistVideos
-                            playlist="https://www.youtube.com/watch?v=JTMHOFf8_Ns&list=PLoganb-r1cCIwFSPzrkDltOWCzQiX4ScB"
-                            max={5}
-                            order="playlist"
-                        />
+                        {isPlaylist ? (
+                            <PlaylistVideos playlist={playlistId || embedSrc} max={5} order="playlist" />
+                        ) : (
+                            <div className="w-full aspect-video rounded-lg overflow-hidden shadow">
+                                <iframe
+                                    title={`${artist.name} - Video`}
+                                    className="w-full h-full"
+                                    src={embedSrc}
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>

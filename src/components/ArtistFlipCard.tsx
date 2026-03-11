@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ArtistDetailsDisplay from "./ArtistDetailsDisplay";
 import { Artist } from "../types/Artist";
+import { RotateCw } from "lucide-react";
 
 interface ArtistFlipCardProps {
     artist: Artist;
@@ -26,10 +27,10 @@ export default function ArtistFlipCard({
                 }}
             >
                 {/* Front of card */}
-                <CardFront artist={artist} onFlip={toggleFlip} />
+                <CardFront artist={artist} onFlip={toggleFlip} isFlipped={isFlipped} />
 
                 {/* Back of card */}
-                <CardBack artist={artist} onFlip={toggleFlip} />
+                <CardBack artist={artist} onFlip={toggleFlip} isFlipped={isFlipped} />
             </div>
         </div>
     );
@@ -38,7 +39,8 @@ export default function ArtistFlipCard({
 function CardFront({
     artist,
     onFlip,
-}: Readonly<{ artist: Artist; onFlip: () => void }>) {
+    isFlipped,
+}: Readonly<{ artist: Artist; onFlip: () => void; isFlipped: boolean }>) {
     return (
         <div
             className="flip-card-front absolute inset-0 w-full h-full"
@@ -71,10 +73,11 @@ function CardFront({
                 </div>
                 <button
                     onClick={onFlip}
-                    className="mt-4 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors self-end"
+                    className="absolute right-4 bottom-4 p-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors shadow-lg z-10"
                     aria-label={`Flip card to see additional information about ${artist.name}`}
+                    title="Flip"
                 >
-                    Flip Card
+                    <RotateCw className={`h-5 w-5 transition-transform duration-500 ${isFlipped ? "rotate-180" : "rotate-0"} hover:rotate-90`} />
                 </button>
             </div>
         </div>
@@ -84,7 +87,8 @@ function CardFront({
 function CardBack({
     artist,
     onFlip,
-}: Readonly<{ artist: Artist; onFlip: () => void }>) {
+    isFlipped,
+}: Readonly<{ artist: Artist; onFlip: () => void; isFlipped: boolean }>) {
     return (
         <div
             className="flip-card-back absolute inset-0 w-full h-full"
@@ -100,10 +104,11 @@ function CardBack({
                 <ArtistDetailsDisplay artist={artist} />
                 <button
                     onClick={onFlip}
-                    className="mt-4 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors self-end"
+                    className="absolute right-4 bottom-4 p-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors shadow-lg z-10"
                     aria-label={`Flip card back to see about ${artist.name}`}
+                    title="Flip back"
                 >
-                    Flip Back
+                    <RotateCw className={`h-5 w-5 transition-transform duration-500 ${isFlipped ? "rotate-180" : "rotate-0"} hover:rotate-90`} />
                 </button>
             </div>
         </div>

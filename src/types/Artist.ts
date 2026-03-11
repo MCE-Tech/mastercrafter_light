@@ -11,6 +11,7 @@ export interface Artist {
     craftType: string;
     musicianType: string[];
     performanceType: string[];
+    youtubeVideo: string[];
     genre: string[];
     craftScore: number;
     lastModified: string;

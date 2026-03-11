@@ -9,6 +9,16 @@ type VideoItem = {
 
 function extractPlaylistId(input: string) {
   try {
+    // common patterns: list= param, embed/videoseries?list=..., plain playlist id (starts with PL)
+    const listParamMatch = input.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+    if (listParamMatch) return listParamMatch[1];
+
+    const embedListMatch = input.match(/embed\/videoseries\?list=([a-zA-Z0-9_-]+)/);
+    if (embedListMatch) return embedListMatch[1];
+
+    // plain playlist id
+    if (/^PL[a-zA-Z0-9_-]+$/.test(input)) return input;
+    // if it's a full URL with list= in a different form
     if (input.includes('list=')) {
       const url = new URL(input);
       return url.searchParams.get('list') || input;

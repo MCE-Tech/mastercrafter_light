@@ -7,6 +7,8 @@ import { ScoreRing } from "../components/ScoreRing";
 import anchorAishwarya from "../assets/images/anchor-aishwarya.png";
 import gaurangSahu from "../assets/images/gaurang-sahu.png";
 import humraag from "../assets/images/humraag.png";
+import rishabhSighBisht from "../assets/images/rishabh-singh-bisht.jpg";
+import prateekAggarwal from "../assets/images/prateek-aggarwal.jpg";
 
 const ARTISTS = [
   {
@@ -32,6 +34,24 @@ const ARTISTS = [
     name: "Humraag",
     slug: "humraag",
     image: humraag,
+    isMusician: false,
+  tags: ["Host", "Anchor", "Events"],
+  score: 78,
+  },
+  {
+    id: 4,
+    name: "Rishabh Singh Bisht",
+    slug: "rishabh-singh-bisht",
+    image: rishabhSighBisht,
+    isMusician: true,
+  tags: ["Guitarist", "Composer", "Live"],
+  score: 92,
+  },
+  {
+    id: 5,
+    name: "Prateek Aggarwal",
+    slug: "prateek-aggarwal",
+    image: prateekAggarwal,
     isMusician: false,
   tags: ["Host", "Anchor", "Events"],
   score: 78,

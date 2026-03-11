@@ -15,6 +15,8 @@ import AddArtistPage from './pages/AddArtistPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminGuard from './components/AdminGuard';
+import IndividualArtistPage from "./pages/IndividualArtistPage";
+import ArtistDetailsPage from "./pages/ArtistDetailsPage";
 
 const router = createBrowserRouter(
       createRoutesFromElements(
@@ -27,6 +29,10 @@ const router = createBrowserRouter(
                   <Route path="/services-for-clients" element={<ServicesForClientsPage />} />
                   {/* Add VibeVedaPage route */}
                   <Route path="/vibeveda" element={<VibeVedaPage />} />
+                  <Route path="/individual-artist/:name" element={<IndividualArtistPage />} />
+                  {/* legacy route left in place; new simpler path below */}
+                  {/* generic resume‑style details page */}
+                  <Route path="/ArtistDetails/:name" element={<ArtistDetailsPage />} />
                   {/* Add SpotlightIndexPage route */}
                   <Route path="/spotlight-index" element={<SpotlightIndexPage />} />
                   <Route path="/add-artist" element={<AddArtistPage />} />

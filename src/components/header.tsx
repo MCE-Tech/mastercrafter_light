@@ -71,11 +71,11 @@ export function Header() {
 
   return (
     <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? "bg-gray-100/95 backdrop-blur-md shadow-md border-b border-gray-200" : "bg-transparent"}`}>
-      <div className="container flex h-16 items-center justify-between">
+      <div className="w-full max-w-full mx-auto px-6 md:px-12 flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <a href="/" onClick={handlePageClick('/')} className="flex items-center gap-2">
-            <div className="relative w-40 h-40">
-              <img src={logo} alt="Master Crafters Logo" className="object-contain w-40 h-40" />
+            <div className="relative w-10 h-10 md:w-40 md:h-40">
+              <img src={logo} alt="Master Crafters Logo" className="object-contain w-10 h-10 md:w-40 md:h-40" />
             </div>
           </a>
         </div>

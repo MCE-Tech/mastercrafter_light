@@ -105,3 +105,4 @@ export function loadSpotlightIndexContent(containerId) {
     container.innerHTML = spotlightIndexContent;
   }
 }
+`

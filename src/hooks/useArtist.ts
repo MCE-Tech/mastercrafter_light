@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import artistsData from "../data/artists";
 
@@ -9,6 +9,7 @@ interface UseArtistReturn {
 
 export function useArtist(): UseArtistReturn {
     const { name } = useParams<{ name: string }>();
+    const [isLoading, setIsLoading] = React.useState(true);
 
     const artist = useMemo(
         () =>
@@ -18,5 +19,12 @@ export function useArtist(): UseArtistReturn {
         [name],
     );
 
-    return { artist, isLoading: false };
+    // simulate fetching delay; remove when real API is wired up
+    React.useEffect(() => {
+        setIsLoading(true);
+        const id = setTimeout(() => setIsLoading(false), 300);
+        return () => clearTimeout(id);
+    }, [artist]);
+
+    return { artist, isLoading };
 }

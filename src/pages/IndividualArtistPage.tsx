@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import artistsData from "../data/artists";
+import "./IndividualArtistPage.css";
 
 export default function IndividualArtistPage() {
   const { name } = useParams();
@@ -8,6 +9,26 @@ export default function IndividualArtistPage() {
     (a) => a.slug.toLowerCase() === String(name).toLowerCase()
   );
   const [detailsOpen, setDetailsOpen] = useState(true);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const toggleFlip = () => setIsFlipped((v) => !v);
+
+  const getYouTubeEmbedSrc = (raw?: string) => {
+    if (!raw) return "";
+    const value = String(raw).trim();
+    // playlist URL or param
+    const listMatch = value.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+    if (listMatch) return `https://www.youtube.com/embed/videoseries?list=${listMatch[1]}`;
+    // youtu.be short link
+    const shortMatch = value.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+    if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+    // watch?v= style
+    const watchMatch = value.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+    if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+    // raw playlist id (starts with PL)
+    if (/^PL[a-zA-Z0-9_-]+$/.test(value)) return `https://www.youtube.com/embed/videoseries?list=${value}`;
+    // default: treat as video id
+    return `https://www.youtube.com/embed/${value}`;
+  };
 
   if (!artist) {
     return (
@@ -18,17 +39,50 @@ export default function IndividualArtistPage() {
     );
   }
 
+  const embedSrc = getYouTubeEmbedSrc(artist.youtubeVideo && artist.youtubeVideo[0]);
+
   return (
     <section className="py-12 md:py-16 lg:py-20 bg-background min-h-screen">
       <div className="container px-2 md:px-4 max-w-6xl mx-auto h-[8vh]">
         <div className="flex flex-col md:flex-row items-start gap-8 mb-10">
-          {/* Left: Artist Image */}
+          {/* Left: Artist Image / Flip card */}
           <div className="flex-shrink-0 w-full md:w-56 lg:w-72 text-center md:text-left">
-            <img
-              src={artist.image}
-              alt={artist.name}
-              className="w-44 h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover rounded-lg border-4 border-primary/20 mx-auto md:mx-0"
-            />
+            <section
+              className="artist-card mx-auto md:mx-0"
+              role="button"
+              tabIndex={0}
+              aria-pressed={isFlipped}
+              onClick={toggleFlip}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  toggleFlip();
+                }
+              }}
+            >
+              <div className={`card-inner ${isFlipped ? "is-flipped" : ""}`}>
+                <div className="card-face card-front">
+                  <img
+                    src={artist.image}
+                    alt={artist.name}
+                    loading="lazy"
+                    className="artist-image"
+                    width={288}
+                    height={288}
+                  />
+                </div>
+
+                <div className="card-face card-back">
+                  <div className="p-3 text-left">
+                    <h3 className="text-base font-semibold mb-2">About</h3>
+                    <p className="text-sm text-muted-foreground">{artist.bio}</p>
+                    <div className="mt-3">
+                      <span className="inline-block px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">{artist.location}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
 
           {/* Right: Basic Info + Details + About/Why */}
@@ -116,18 +170,20 @@ export default function IndividualArtistPage() {
         </div>
 
         {/* Videos Section - embed playlist from provided YouTube link */}
-        <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-4">Videos</h2>
-          <div className="w-full aspect-video rounded-lg overflow-hidden shadow">
-            <iframe
-              title={`${artist.name} - Videos`}
-              src="https://www.youtube.com/embed/videoseries?list=PLoganb-r1cCIwFSPzrkDltOWCzQiX4ScB"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full border-0"
-            />
+        {embedSrc ? (
+          <div className="mt-8">
+            <h2 className="text-2xl font-bold mb-4">Videos</h2>
+            <div className="w-full aspect-video rounded-lg overflow-hidden shadow">
+              <iframe
+                title={`${artist.name} - Videos`}
+                src={embedSrc}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </section>
   );

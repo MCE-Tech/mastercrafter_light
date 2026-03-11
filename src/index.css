@@ -281,3 +281,28 @@
 .m-auto {
   margin: auto;
 }
+
+/* Responsive base font-size scaling to make text & components larger on bigger screens */
+html {
+  font-size: 16px;
+}
+@media (min-width: 640px) {
+  html {
+    font-size: 16.5px;
+  }
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1536px) {
+  html {
+    font-size: 19px;
+  }
+}
