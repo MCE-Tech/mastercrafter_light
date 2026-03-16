@@ -6,8 +6,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import HomePage from './pages/Home';
 import SpotlightIndexPage from './pages/SpotlightIndexPage';
 import VibeVedaPage from './pages/VibeVedaPage';
-import OurArtists from './pages/OurArtistsPage';
-import AllArtistsPage from './pages/AllArtistsPage';
+import OurArtistsPage from './pages/OurArtistsPage';
 import ArtistProfilePage from './pages/ArtistProfilePage';
 import ServicesForArtistsPage from './pages/ServicesForArtistsPage';
 import ServicesForClientsPage from './pages/ServicesForClientsPage';
@@ -22,8 +21,7 @@ const router = createBrowserRouter(
       createRoutesFromElements(
             <Route path='' element={<App/>}>
                   <Route path='/' element={<HomePage/>}/>
-                  <Route path="/our-artists" element={<AllArtistsPage />} />
-                  <Route path="/all-artists" element={<OurArtists />} />
+                  <Route path="/our-artists" element={<OurArtistsPage />} />
                   <Route path="/artist/:name" element={<ArtistProfilePage />} />
                   <Route path="/services-for-artists" element={<ServicesForArtistsPage />} />
                   <Route path="/services-for-clients" element={<ServicesForClientsPage />} />

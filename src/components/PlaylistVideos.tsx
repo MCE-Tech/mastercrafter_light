@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
+// Add ImportMetaEnv type declaration for VITE_YT_API_KEY
+declare global {
+  interface ImportMetaEnv {
+    VITE_YT_API_KEY?: string;
+  }
+  interface ImportMeta {
+    env: ImportMetaEnv;
+  }
+}
+
 type VideoItem = {
   id: string;
   title: string;

@@ -3,7 +3,7 @@ export interface Artist {
     name: string;
     slug: string;
     image: string;
-    isMusician: boolean;
+    artistType: string;
     tags: string[];
     bio: string;
     location: string;

@@ -43,7 +43,7 @@ export default function ArtistDetailsPage() {
             {artist.name}
           </h1>
           <p className="text-muted-foreground mt-2">
-            {artist.isMusician ? "Musician" : "Performer"} &middot; {artist.location || "—"}
+            {artist.artistType} &middot; {artist.location || "—"}
           </p>
         </header>
 

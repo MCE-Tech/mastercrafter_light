@@ -89,7 +89,7 @@ export default function ArtistProfilePage() {
                     {/* Playlist Section */}
                     <div className="max-w-6xl mx-auto px-2 md:px-0 mt-12 text-center">
                         <div className="mb-4">
-                            <h2 className="text-2xl font-bold">Videos</h2>
+                            <h2 className="text-2xl font-bold">Performance Videos</h2>
                         </div>
                         {isPlaylist ? (
                             <PlaylistVideos playlist={playlistId || embedSrc} max={5} order="playlist" />

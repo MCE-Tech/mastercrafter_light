@@ -36,7 +36,7 @@ export default function ArtistFlipCard({
     );
 }
 
-function CardFront({
+function CardBack({
     artist,
     onFlip,
     isFlipped,
@@ -44,7 +44,9 @@ function CardFront({
     return (
         <div
             className="flip-card-front absolute inset-0 w-full h-full"
-            style={{ backfaceVisibility: "hidden" }}
+            style={{ backfaceVisibility: "hidden",
+                transform: "rotateY(180deg)",
+             }}
         >
             <div className="rounded-xl bg-white/80 shadow p-6 border-l-4 border-primary flex flex-col h-full">
                 <div className="flex-1">
@@ -84,7 +86,7 @@ function CardFront({
     );
 }
 
-function CardBack({
+function CardFront({
     artist,
     onFlip,
     isFlipped,
@@ -94,12 +96,11 @@ function CardBack({
             className="flip-card-back absolute inset-0 w-full h-full"
             style={{
                 backfaceVisibility: "hidden",
-                transform: "rotateY(180deg)",
             }}
         >
             <div className="rounded-xl bg-white/80 shadow p-6 border-l-4 border-primary flex flex-col h-full justify-center items-center">
                 <h2 className="text-xl font-bold text-primary mb-4">
-                    Additional Information
+                    Basic Information
                 </h2>
                 <ArtistDetailsDisplay artist={artist} />
                 <button

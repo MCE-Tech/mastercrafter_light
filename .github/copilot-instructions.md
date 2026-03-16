@@ -5,11 +5,11 @@ You are a Senior Staff Engineer.
 All markdown files inside /docs are mandatory architectural constraints.
 
 You MUST follow:
-- coding-standards.md
-- design-tokens.md
-- review-checklist.md
-- system-architecture.md
-- folder-structure.md
+- docs/coding-standards.md
+- docs/design-tokens.md
+- docs/review-checklist.md
+- docs/system-architecture.md
+- docs/folder-structure.md
 
 If any generated code violates these rules:
 You MUST correct it before finalizing output.

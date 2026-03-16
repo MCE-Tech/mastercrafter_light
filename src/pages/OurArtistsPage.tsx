@@ -1,54 +1,117 @@
-﻿import { Header } from "@/components/header"
-import { AnimatedBackground } from "@/components/animated-background"
-import { ArtistsSection } from "@/components/artists-section"
-import { OurArtistsHero } from "@/components/our-artists-hero"
-import { getNotionIframe } from "@/lib/NotionIframeCache"
+import React from "react";
+import { AnimatedBackground } from "../components/animated-background";
+import { Link } from "react-router-dom";
+import { ScoreRing } from "../components/ScoreRing";
+
+// Example artist data (replace with real data or props/fetch in future)
+import anchorAishwarya from "../assets/images/anchor-aishwarya.png";
+import gaurangSahu from "../assets/images/gaurang-sahu.png";
+import humraag from "../assets/images/humraag.png";
+import rishabhSighBisht from "../assets/images/rishabh-singh-bisht.jpg";
+import prateekAggarwal from "../assets/images/prateek-aggarwal.jpg";
+
+const ARTISTS = [
+  {
+    id: 2,
+    name: "Gaurang Sahu",
+    slug: "gaurang-sahu",
+    image: gaurangSahu,
+    artistType: "Musician",
+  tags: ["Guitarist", "Composer", "Live"],
+  score: 92,
+  },
+  {
+    id: 3,
+    name: "Humraag",
+    slug: "humraag",
+    image: humraag,
+    artistType: "Performer",
+  tags: ["Vocalist", "Performer", "Indie"],
+  score: 78,
+  },
+  {
+    id: 4,
+    name: "Rishabh Singh Bisht",
+    slug: "rishabh-singh-bisht",
+    image: rishabhSighBisht,
+    artistType: "Musician",
+  tags: ["Guitarist", "Composer", "Live"],
+  score: 92,
+  },
+  {
+    id: 5,
+    name: "Prateek Aggarwal",
+    slug: "prateek-aggarwal",
+    image: prateekAggarwal,
+    artistType: "Singer",
+  tags: ["Singer", "Guitarist"],
+  score: 78,
+  },
+  {
+    id: 1,
+    name: "Aishwarya Sharma",
+    slug: "aishwarya-sharma",
+    image: anchorAishwarya,
+    artistType: "Anchor",
+  tags: ["Host", "Anchor", "Events"],
+  score: 0,
+  },
+  // Add more artists as needed
+];
 
 export default function OurArtistsPage() {
-  const iframe = getNotionIframe();
   return (
-    // <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
-    //   <div className="fixed inset-0 -z-10">
-    //     <AnimatedBackground />
-    //   </div>
-    //   <div className="relative z-10">
-    //     <Header />
-    //     <main className="flex-1">
-    //       <div className="relative">
-    //         {/* Decorative elements */}
-    //         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary/10 to-transparent" />
-    //         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-secondary/10 to-transparent" />
-    //         {/* Content */}
-    //         <div className="relative z-10">
-    //           <OurArtistsHero />
-    //           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    //             <ArtistsSection />
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </main>
-    //   </div>
-    // </div>
-    <main className="flex-1">
-          {/* <div className="relative">
-            Decorative elements
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary/10 to-transparent" />
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-secondary/10 to-transparent" />
-            Content
-            <div className="relative z-10">
-              <OurArtistsHero />
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <ArtistsSection />
-              </div>
-            </div>
-          </div> */}
-          <iframe
-            src="https://v2-embednotion.com/1e434c2c07ee80419a4cf725da78c7cc" className="w-full h-screen"
-            title="Notion Page Embed"
-          />
-
-          {/* {iframe} */}
-
-        </main>
-  )
+    <div className="relative min-h-screen">
+      <AnimatedBackground />
+  <section className="py-12 md:py-16 lg:py-20 min-h-screen relative z-10">
+        <div className="container px-4 md:px-6">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-5">Our Talents</h1>
+          <h2 className="text-3xl sm:text-4xl text-center mb-5">Discover our Artist</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {ARTISTS.map((artist) => (
+              <Link
+                to={`/artist/${artist.slug}`}
+                key={artist.id}
+                className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center text-center hover:shadow-2xl transition-shadow no-underline"
+                style={{ color: 'inherit' }}
+              >
+                <div className="mb-2">
+                  <img
+                    src={artist.image}
+                    alt={artist.name}
+                    className="w-32 h-32 object-cover rounded-full border-4 border-primary/30"
+                  />
+                </div>
+                <h2 className="text-xl font-bold mb-1 mt-4 h-6 flex items-center justify-center w-full truncate" style={{minHeight:'1.5rem'}}>
+                  {artist.name.split(' ')[0]}
+                </h2>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  {artist.artistType}
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center mb-2">
+                  {artist.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {artist.score !== undefined && artist.score !== null && artist.score !== 0 && (
+                  <div className="flex flex-col items-center mt-1">
+                    <span className="text-xs text-muted-foreground mb-1">Splotlight Index</span>
+                    <div className="flex justify-center">
+                      <ScoreRing score={artist.score} />
+                    </div>
+                  </div>
+                )}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
+// ...existing code...

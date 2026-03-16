@@ -32,7 +32,9 @@ export function Header() {
     const isServicesPage = ['/services-for-artists', '/services-for-clients'].includes(activePath);
 
     let activeLink: Element | null =
-      isServicesPage && servicesRef.current ? servicesRef.current : Array.from(navItems).find(link => link.getAttribute('href') === activePath);
+      isServicesPage && servicesRef.current
+        ? servicesRef.current
+        : (Array.from(navItems).find(link => link.getAttribute('href') === activePath) ?? null);
 
     if (activeLink) {
       const rect = activeLink.getBoundingClientRect();

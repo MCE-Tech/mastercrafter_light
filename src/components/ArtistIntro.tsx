@@ -30,7 +30,7 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
                 ))}
             </div>
             <p className="m-auto mb-2 text-lg text-muted-foreground">
-                {artist.isMusician ? "Musician" : "Performer"}
+                {artist.artistType}
             </p>
         </div>
     );

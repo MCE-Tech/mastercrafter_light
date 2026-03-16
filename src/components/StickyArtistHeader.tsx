@@ -4,7 +4,7 @@ interface Artist {
     image: string;
     name: string;
     tags: string[];
-    isMusician: boolean;
+    artistType: string;
 }
 
 interface StickyArtistHeaderProps {
@@ -50,7 +50,7 @@ export default function StickyArtistHeader({
                         </div>
                     </div>
                     <span className="block mt-2 md:mt-0 text-sm text-muted-foreground font-semibold">
-                        {artist.isMusician ? "Musician" : "Performer"}
+                        {artist.artistType}
                     </span>
                 </div>
             </div>

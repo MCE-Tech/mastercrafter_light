@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import artistsData from "../data/artists";
 import "./IndividualArtistPage.css";
@@ -11,6 +11,20 @@ export default function IndividualArtistPage() {
   const [detailsOpen, setDetailsOpen] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
   const toggleFlip = () => setIsFlipped((v) => !v);
+  const frontRef = useRef<HTMLDivElement>(null);
+  const backRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (frontRef.current && backRef.current) {
+      const frontHeight = frontRef.current.offsetHeight;
+      const backHeight = backRef.current.offsetHeight;
+      const maxHeight = Math.max(frontHeight, backHeight);
+      const cardInner = frontRef.current.parentElement;
+      if (cardInner) {
+        cardInner.style.height = `${maxHeight}px`;
+      }
+    }
+  }, [artist]);
 
   const getYouTubeEmbedSrc = (raw?: string) => {
     if (!raw) return "";
@@ -46,7 +60,7 @@ export default function IndividualArtistPage() {
       <div className="container px-2 md:px-4 max-w-6xl mx-auto h-[8vh]">
         <div className="flex flex-col md:flex-row items-start gap-8 mb-10">
           {/* Left: Artist Image / Flip card */}
-          <div className="flex-shrink-0 w-full md:w-56 lg:w-72 text-center md:text-left">
+          <div className="flex-shrink-0 w-full md:w-[35%] lg:w-[35%] text-center md:text-left">
             <section
               className="artist-card mx-auto md:mx-0"
               role="button"
@@ -61,7 +75,7 @@ export default function IndividualArtistPage() {
               }}
             >
               <div className={`card-inner ${isFlipped ? "is-flipped" : ""}`}>
-                <div className="card-face card-front">
+                <div className="card-face card-front" ref={frontRef}>
                   <img
                     src={artist.image}
                     alt={artist.name}
@@ -72,7 +86,7 @@ export default function IndividualArtistPage() {
                   />
                 </div>
 
-                <div className="card-face card-back">
+                <div className="card-face card-back" ref={backRef}>
                   <div className="p-3 text-left">
                     <h3 className="text-base font-semibold mb-2">About</h3>
                     <p className="text-sm text-muted-foreground">{artist.bio}</p>
@@ -86,7 +100,7 @@ export default function IndividualArtistPage() {
           </div>
 
           {/* Right: Basic Info + Details + About/Why */}
-          <div className="flex-1">
+          <div className="flex-shrink-0 w-full md:w-[65%] lg:w-[65%]">
             <h1 className="text-3xl md:text-4xl font-extrabold mb-2 gradient-text">{artist.name}</h1>
             <div className="flex flex-wrap gap-2 mb-3">
               {artist.tags.map((tag, idx) => (
@@ -98,7 +112,7 @@ export default function IndividualArtistPage() {
                 </span>
               ))}
             </div>
-            <p className="mb-4 text-lg text-muted-foreground">{artist.isMusician ? "Musician" : "Performer"} • {artist.location}</p>
+            <p className="mb-4 text-lg text-muted-foreground">{artist.artistType} • {artist.location}</p>
 
             <div className="rounded-xl bg-secondary/10 p-4 shadow border border-secondary/20 mb-6">
               <button
