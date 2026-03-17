@@ -85,24 +85,42 @@ export default function ArtistProfilePage() {
                         <ArtistIntro artist={artist} />
                         <ArtistFlipCard artist={artist} />
                     </div>
-
-                    {/* Playlist Section */}
                     <div className="max-w-6xl mx-auto px-2 md:px-0 mt-12 text-center">
                         <div className="mb-4">
                             <h2 className="text-2xl font-bold">Performance Videos</h2>
                         </div>
-                        {isPlaylist ? (
-                            <PlaylistVideos playlist={playlistId || embedSrc} max={5} order="playlist" />
-                        ) : (
-                            <div className="w-full aspect-video rounded-lg overflow-hidden shadow">
-                                <iframe
-                                    title={`${artist.name} - Video`}
-                                    className="w-full h-full"
-                                    src={embedSrc}
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                />
-                            </div>
+                    </div>
+                    {/* Playlist Section */}
+                    <div className="grid grid-cols-7 gap-4 items-stretch">
+                        {artist.youtubeVideo.slice(0, 3).map((video, index) => {
+                            const { embedSrc } = parseYouTube(video);
+                            return (
+                                <div key={index} className="col-span-2 w-full aspect-video rounded-lg overflow-hidden shadow">
+                                    <iframe
+                                        title={`${artist.name} - Video ${index + 1}`}
+                                        className="w-full h-full"
+                                        src={embedSrc}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    />
+                                </div>
+                            );
+                        })}
+                        {artist.youtubePlaylist && (
+                            
+                            <a  href={artist.youtubePlaylist}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="col-span-1 flex flex-col items-center justify-center gap-2 group self-center"
+                            >
+                                <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                                <span className="text-xs font-semibold text-foreground text-center leading-tight px-1">View Full Playlist</span>
+                                <span className="text-[10px] text-muted-foreground">YouTube</span>
+                            </a>
                         )}
                     </div>
                 </div>

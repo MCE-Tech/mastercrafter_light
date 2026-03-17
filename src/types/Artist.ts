@@ -18,4 +18,5 @@ export interface Artist {
     verificationDate: string;
     introduction: React.ReactNode;
     whyBook: string[];
+    youtubePlaylist: string;
 }

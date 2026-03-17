@@ -43,6 +43,7 @@ const artistsData: Artist[] = [
             "Versatile repertoire: Bollywood, classical, and more",
             "Professional, punctual, and easy to work with",
         ],
+        youtubePlaylist:""
     },
     {
         id: 2,
@@ -50,18 +51,19 @@ const artistsData: Artist[] = [
         slug: "gaurang-sahu",
         image: gaurangSahu,
         artistType: "Musician",
-        tags: ["Guitarist", "Composer", "Live"],
+        tags: ["Guitarist", "Flutist", "Multi-instrumentalist"],
         bio: "Gaurang is a talented guitarist and composer, known for his energetic live performances and original compositions.",
         location: "Delhi, India",
         language: ["Hindi", "English"],
         craftType: "Instrumental Music",
-        musicianType: ["Guitarist", "Composer"],
+        musicianType: ["Guitarist", "Flutist", "Multi-instrumentalist"],
         performanceType: ["Live", "Studio"],
         genre: ["Rock", "Fusion"],
-        craftScore: 92,
-        lastModified: "2025-10-11",
-        verificationDate: "2025-09-20",
-        youtubeVideo : ["6ORS2teb9r4"],
+        craftScore: 92.41,
+        lastModified: "2025-09-28",
+        verificationDate: "2025-05-05",
+        youtubeVideo : ["6ORS2teb9r4","8YnWBq-C5fA","JTMHOFf8_Ns"],
+        youtubePlaylist : "PLoganb-r1cCIwFSPzrkDltOWCzQiX4ScB",
         introduction: (
             <p>
               <b>Gaurang Sahu</b> is a self-taught <b>Indian flute artist</b> and 
@@ -113,6 +115,7 @@ const artistsData: Artist[] = [
             "Engages audiences with humor and professionalism",
             "Adaptable to any event format",
         ],
+        youtubePlaylist:""
     },
     {
     id: 4,
@@ -143,7 +146,8 @@ const artistsData: Artist[] = [
       "Balanced commercial and classical appeal",
       "Good adaptability across audiences",
       "Ideal for intimate and corporate settings"
-    ]
+    ],
+    youtubePlaylist:""
   },
   {
     id: 5,
@@ -178,7 +182,8 @@ const artistsData: Artist[] = [
       "Strong classical base",
       "Great for mehfil-style events",
       "Versatile language repertoire"
-    ]
+    ],
+    youtubePlaylist:""
   },
 ];
 
