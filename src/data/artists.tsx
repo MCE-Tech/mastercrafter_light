@@ -20,30 +20,30 @@ const artistsData: Artist[] = [
         location: "Delhi NCR",
         language: ["Hindi", "English"],
         craftType: "Anchor",
-        musicianType: ["Singer"],
+        musicianType: [],
         performanceType: ["Live"],
         genre: [],
         craftScore: -1,
         lastModified: "2025-12-10",
         verificationDate: "2025-09-15",
-        youtubeVideo : ["is54w6i1jJ8?si=UlgUgITO0C_3SgJ7"],
+        youtubeVideo : ["is54w6i1jJ8","Tn1N7blwpm8","elFOFbgiJwY"],
         introduction: (
             <>
                 <h2>About Aishwarya Sharma</h2>
                 <p>
-                    Aishwarya is a celebrated vocalist with a passion for both
-                    classical and contemporary music. Her performances captivate
-                    audiences and leave a lasting impression.
+                    Anchor Aishwarya brings over 3 years of live anchoring experience, 
+                    known for her vibrant stage presence and natural flair for connecting with audiences.
+                    Having hosted events for reputed institutions like SEBI, NCDEX, and multiple college farewells, 
+                    she transforms every stage into an engaging and memorable experience.
                 </p>
             </>
         ),
         whyBook: [
-            "Award-winning performer with 10+ years of experience",
-            "Engages audiences of all ages",
-            "Versatile repertoire: Bollywood, classical, and more",
-            "Professional, punctual, and easy to work with",
+            "Skilled in live audience interaction and energetic crowd work",
+            "Experience with corporate, academic, and social events",
+            "Passionate anchor ready to bring spark and spontaneity to your event",
         ],
-        youtubePlaylist:""
+        youtubePlaylist:"PLoganb-r1cCJkuRINeb_ze9WdUyC62PfE"
     },
     {
         id: 2,

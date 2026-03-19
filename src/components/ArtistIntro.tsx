@@ -32,6 +32,14 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
             <p className="m-auto mb-2 text-lg text-muted-foreground">
                 {artist.artistType}
             </p>
+            {/* Book Artist CTA */}
+            {/* <button
+                onClick={() => onBook(artist)}
+                className="mt-4 flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-primary text-white font-semibold text-base shadow-md hover:bg-primary/90 active:scale-95 transition-all duration-200 whitespace-nowrap mx-auto"
+            >
+                <span>📅</span>
+                Book {artist.name}
+            </button> */}
         </div>
     );
 }
