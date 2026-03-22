@@ -25,7 +25,7 @@ const artistsData: Artist[] = [
         genre: [],
         craftScore: -1,
         lastModified: "2025-12-10",
-        verificationDate: "2025-09-15",
+        verificationDate: "",
         youtubeVideo : ["is54w6i1jJ8","Tn1N7blwpm8","elFOFbgiJwY"],
         introduction: (
             <>
@@ -39,10 +39,10 @@ const artistsData: Artist[] = [
             </>
         ),
         whyBook: [
-            "Skilled in live audience interaction and energetic crowd work",
-            "Experience with corporate, academic, and social events",
-            "Passionate anchor ready to bring spark and spontaneity to your event",
-        ],
+            "Experienced in hosting large-scale events",
+            "Fluent in multiple languages",
+            "Engages audiences with humor and professionalism",
+            "Adaptable to any event format",        ],
         youtubePlaylist:"PLoganb-r1cCJkuRINeb_ze9WdUyC62PfE"
     },
     {
@@ -50,7 +50,7 @@ const artistsData: Artist[] = [
         name: "Gaurang Sahu",
         slug: "gaurang-sahu",
         image: gaurangSahu,
-        artistType: "Musician",
+        artistType: "Musician/Instrumentalist",
         tags: ["Guitarist", "Flutist", "Multi-instrumentalist"],
         bio: "Gaurang is a talented guitarist and composer, known for his energetic live performances and original compositions.",
         location: "Delhi, India",
@@ -87,19 +87,19 @@ const artistsData: Artist[] = [
         name: "Humraag",
         slug: "humraag",
         image: humraag,
-        artistType: "Performer",
-        tags: ["Host", "Anchor", "Events"],
+        artistType: "Musician/Band",
+        tags: ["Guitarist", "Singer", "Band"],
         bio: "Humraag is a charismatic host and anchor, bringing energy and professionalism to every event.",
-        location: "Bangalore, India",
-        language: ["Hindi", "English", "Kannada"],
-        craftType: "Anchoring",
-        musicianType: [],
-        performanceType: ["Live", "Corporate"],
-        genre: ["Events", "Shows"],
-        craftScore: 78,
-        lastModified: "2025-10-12",
-        verificationDate: "2025-09-25",
-        youtubeVideo : ["83xk79cTFWw"],
+        location: "Delhi NCR",
+        language: ["Hindi", "English"],
+        craftType: "Musician/Anchor",
+        musicianType: ["Singer", "Guitarist","Drummer"],
+        performanceType: ["Solo","Duo","Trio","Band"],
+        genre: ["Devotional","Sufi","Bollywood","Patriotric"],
+        craftScore: 88.05,
+        lastModified: "2025-09-28",
+        verificationDate: "2025-05-05",
+        youtubeVideo : ["83xk79cTFWw","b5b6lIhIb48","RKcKeXMG-EM"],
         introduction: (
             <>
                 <h2>About Humraag</h2>
@@ -110,20 +110,19 @@ const artistsData: Artist[] = [
             </>
         ),
         whyBook: [
-            "Experienced in hosting large-scale events",
-            "Fluent in multiple languages",
-            "Engages audiences with humor and professionalism",
-            "Adaptable to any event format",
+            "Strong synergy and audience-first approach",
+            "Versatile sound with Hindi fusion and emotional depth",
+            "Experienced performers across festivals, cafés, and cultural events",
         ],
-        youtubePlaylist:""
+        youtubePlaylist:"PLoganb-r1cCKIUSGgRtPanNVvyJnWKrG9"
     },
     {
     id: 4,
     name: "Rishabh Singh Bisht",
     slug: "rishabh-singh-bisht",
     image: rishabhSighBisht,
-    artistType: "Musician",
-    tags: ["Singer", "Acoustic", "Bollywood"],
+    artistType: "Musician/Band",
+    tags: ["Singer", "Guitarist"],
     bio: "Singer and guitarist performing Hindi and English repertoire across Bollywood and light music genres.",
     location: "Delhi NCR",
     language: ["English", "Hindi"],
@@ -131,10 +130,10 @@ const artistsData: Artist[] = [
     musicianType: ["Singer", "Guitarist"],
     performanceType: ["Solo", "Duo"],
     genre: ["Bollywood Covers", "Light Music", "Semi Classical"],
-    craftScore: 80.03375,
-    lastModified: "2025-09-27T19:10:00",
+    craftScore: 80.03,
+    lastModified: "2025-09-28",
     verificationDate: "2025-05-05",
-    youtubeVideo : ["2UxOJGsqXzQ"],
+    youtubeVideo : ["2UxOJGsqXzQ","0GkSKB3iXVU","KK8K4obh4U0"],
     introduction: (
       <>
         <p>
@@ -143,18 +142,18 @@ const artistsData: Artist[] = [
       </>
     ),
     whyBook: [
-      "Balanced commercial and classical appeal",
-      "Good adaptability across audiences",
-      "Ideal for intimate and corporate settings"
+      "Classically trained artist with a deep yet versatile sound",
+      "Engaging performer across college fests, cafés, and private events",
+      "Connects with diverse audiences, from youth to seasoned music lovers"
     ],
-    youtubePlaylist:""
+    youtubePlaylist:"PLoganb-r1cCJnNsqtQhbYelmWoeknp8YT"
   },
   {
     id: 5,
     name: "Prateek Aggarwal",
     slug: "prateek-aggarwal",
     image: prateekAggarwal,
-    artistType: "Singer",
+    artistType: "Musician/Singer",
     tags: ["Singer", "Guitarist", "Ghazal", "Sufi"],
     bio: "Singer-guitarist performing Bollywood, Ghazal, and Sufi",
     location: "Delhi NCR",
@@ -162,28 +161,28 @@ const artistsData: Artist[] = [
     craftType: "Musicians / Band",
     musicianType: ["Singer", "Guitarist"],
     performanceType: ["Solo", "Duo", "Trio"],
-    youtubeVideo : ["PLoganb-r1cCJ2CDzCqnL4xYVpDbK1NIjr"],
+    youtubeVideo : ["CVrc_lk_lfE","wYuGLRekydM","iewNNzdP2ZU"],
     genre: [
       "Bollywood Covers",
       "Ghazal",
       "Devotional",
     ],
-    craftScore: 68.8531,
+    craftScore: 68.85,
     lastModified: "2025-09-27T19:10:00",
     verificationDate: "2025-05-05",
     introduction: (
       <>
         <p>
-          Prateek blends soulful vocals with acoustic guitar to create intimate and expressive performances.
+          Prateek Aggarwal is a Delhi NCR-based vocalist and guitarist with over 10 years of live performance experience, known for his soothing semi-classical renditions blended with a contemporary touch.
         </p>
       </>
     ),
     whyBook: [
-      "Strong classical base",
-      "Great for mehfil-style events",
-      "Versatile language repertoire"
+      "Soulful vocals with a semi-classical twist",
+      "Ideal for acoustic, ambient, and serene sets",
+      "Trained musician with a refined, modern style"
     ],
-    youtubePlaylist:""
+    youtubePlaylist:"PLoganb-r1cCJ2CDzCqnL4xYVpDbK1NIjr"
   },
 ];
 
