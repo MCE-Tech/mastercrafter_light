@@ -18,7 +18,7 @@ const ARTISTS = [
     image: gaurangSahu,
     artistType: "Musician/Instrumentalist",
     tags: ["Guitarist", "Composer", "Live"],
-    score: 92.41,
+    score: 92,
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const ARTISTS = [
     image: humraag,
     artistType: "Musician/Band",
     tags: ["Vocalist", "Performer", "Indie"],
-    score: 88.05,
+    score: 88,
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const ARTISTS = [
     image: rishabhSighBisht,
     artistType: "Musician/Band",
     tags: ["Guitarist", "Composer", "Live"],
-    score: 80.03,
+    score: 80,
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const ARTISTS = [
     image: prateekAggarwal,
     artistType: "Musician/Singer",
     tags: ["Singer", "Guitarist"],
-    score: 68.85,
+    score: 68,
   },
   {
     id: 1,
