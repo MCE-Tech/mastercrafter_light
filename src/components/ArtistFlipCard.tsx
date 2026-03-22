@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ArtistDetailsDisplay from "./ArtistDetailsDisplay";
 import { Artist } from "../types/Artist";
 import { RotateCw } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 
 interface ArtistFlipCardProps {
     artist: Artist;
@@ -138,7 +139,7 @@ function CardBack({
                                 💡
                             </div>
                             <h3 className="text-base font-bold text-primary m-0">
-                                Why Book {artist.name}?
+                                Why your guests will love  {artist.name}?
                             </h3>
                         </div>
 
@@ -165,8 +166,8 @@ function CardBack({
                         className="flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors px-3 py-1.5 rounded-full hover:bg-primary/5"
                         aria-label={`Flip card back to see basic info about ${artist.name}`}
                     >
-                        <RotateCw className={`h-3.5 w-3.5 transition-transform duration-500 ${isFlipped ? "rotate-180" : "rotate-0"}`} />
-                        View Basic Info
+                        <ArrowLeft className="h-3.5 w-3.5" />
+                        Basic Info
                     </button>
                 </div>
             </div>
@@ -225,7 +226,7 @@ function CardFront({
                     style={{ background: "linear-gradient(90deg, #7c3aed08 0%, transparent 100%)" }}
                 >
                     <h1 className="text-lg font-bold text-primary m-0 leading-tight text-center">
-                        {artist.name}
+                        {artist.artistType}
                     </h1>
                 </div>
 
@@ -289,10 +290,8 @@ function CardFront({
                         className="flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors px-3 py-1.5 rounded-full hover:bg-primary/5"
                         aria-label={`Flip card to see about ${artist.name}`}
                     >
-                        <RotateCw
-                            className={`h-3.5 w-3.5 transition-transform duration-500 ${isFlipped ? "rotate-180" : "rotate-0"}`}
-                        />
-                        Learn More
+                        View details
+                        <ArrowRight className="h-3.5 w-3.5" />
                     </button>
                 </div>
             </div>

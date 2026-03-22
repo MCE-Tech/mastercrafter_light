@@ -76,8 +76,8 @@ export function Header() {
       <div className="w-full max-w-full mx-auto px-6 md:px-12 flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <a href="/" onClick={handlePageClick('/')} className="flex items-center gap-2">
-            <div className="relative w-10 h-10 md:w-40 md:h-40">
-              <img src={logo} alt="Master Crafters Logo" className="object-contain w-10 h-10 md:w-40 md:h-40" />
+            <div className="relative w-20 h-20 md:w-40 md:h-40 lg:w-28 lg:h-28 md:mt-2 lg:mt-2">
+              <img src={logo} alt="Master Crafters Logo" className="object-contain w-20 h-20 md:w-40 md:h-40 lg:w-28 lg:h-28" />
             </div>
           </a>
         </div>
