@@ -66,14 +66,23 @@ function BasicInfoTab({ artist }: Readonly<{ artist: Artist }>) {
     return (
         <div className="flex flex-col h-full overflow-hidden">
             {/* Body */}
+            <div className="flex items-center gap-3 px-6 py-4 border-b border-purple-100"
+                style={{ background: "linear-gradient(90deg, #7c3aed08 0%, transparent 100%)" }}
+            >
+                <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center text-base shrink-0">
+                    👤
+                </div>
+                <h3 className="text-lg font-bold text-primary m-0 leading-tight">
+                    Overview
+                </h3>
+            </div>
             <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
-
-                {/* Divider */}
+                {/* Divider
                 <div className="flex items-center gap-2">
                     <div className="flex-1 h-px bg-purple-100" />
                     <span className="text-purple-300 text-xs">✦</span>
                     <div className="flex-1 h-px bg-purple-100" />
-                </div>
+                </div> */}
 
                 {/* Info pills grid */}
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-2">

@@ -1,5 +1,7 @@
 import { Artist } from "@/types/Artist";
 import React from "react";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface ArtistIntroProps {
     artist: Artist;
@@ -49,6 +51,11 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
             <div className="artist-action-buttons m-auto mt-6 mb-4 flex md:flex-row gap-3 justify-center md:justify-start">
                 {/* View Videos — outlined ghost style with secondary color */}
                 <button
+                    onClick={() => {
+                        document.getElementById("view-playlist-button")?.scrollIntoView({
+                            behavior: "smooth"
+                        });
+                    }}
                     className="group flex items-center justify-center gap-2 px-5 py-2 rounded-full font-semibold text-base whitespace-nowrap transition-all duration-200 active:scale-95 border-2 border-secondary text-secondary"
                     style={{
                         background: "transparent",
@@ -92,6 +99,12 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
                         (e.currentTarget as HTMLButtonElement).style.color = "#a855f7";
                         (e.currentTarget as HTMLButtonElement).style.borderColor = "#a855f7";
                    }}
+                    onClick={() => {
+                        const phoneNumber = "918329303275"; // your WhatsApp Business number
+                        const message = `Hi, I want to book ${artist.name} for an event. Please share pricing & availability.`;
+                        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                        window.open(url, "_blank");
+                    }}
                 >
                     <span>📅</span>
                     Book Artist
