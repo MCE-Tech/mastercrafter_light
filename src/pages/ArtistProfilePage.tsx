@@ -90,7 +90,7 @@ export default function ArtistProfilePage() {
                         />
                     </div>
                     <div className="max-w-6xl mx-auto px-2 md:px-0 mt-12 text-center">
-                        <div className="mb-4">
+                        <div className="mb-4" id="view-playlist-button">
                             <h2 className="text-2xl font-bold">Performance Videos</h2>
                         </div>
                     </div>

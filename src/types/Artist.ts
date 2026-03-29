@@ -19,4 +19,5 @@ export interface Artist {
     introduction: React.ReactNode;
     whyBook: string[];
     youtubePlaylist: string;
+    instruments: string[];
 }

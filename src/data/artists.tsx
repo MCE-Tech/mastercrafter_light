@@ -21,6 +21,7 @@ const artistsData: Artist[] = [
         language: ["Hindi", "English"],
         craftType: "Anchor",
         musicianType: [],
+        instruments: [],
         performanceType: ["Live"],
         genre: [],
         craftScore: -1,
@@ -29,7 +30,6 @@ const artistsData: Artist[] = [
         youtubeVideo : ["is54w6i1jJ8","Tn1N7blwpm8","elFOFbgiJwY"],
         introduction: (
             <>
-                <h2>About Aishwarya Sharma</h2>
                 <p>
                     Anchor Aishwarya brings over 3 years of live anchoring experience, 
                     known for her vibrant stage presence and natural flair for connecting with audiences.
@@ -50,6 +50,7 @@ const artistsData: Artist[] = [
         name: "Gaurang Sahu",
         slug: "gaurang-sahu",
         image: gaurangSahu,
+        instruments: ["Flute", "Guitar", "Cajon", "Didgeridoo"],
         artistType: "Musician/Instrumentalist",
         tags: ["Guitarist", "Flutist", "Multi-instrumentalist"],
         bio: "Gaurang is a talented guitarist and composer, known for his energetic live performances and original compositions.",
@@ -87,6 +88,7 @@ const artistsData: Artist[] = [
         name: "Humraag",
         slug: "humraag",
         image: humraag,
+        instruments: [],
         artistType: "Musician/Band",
         tags: ["Guitarist", "Singer", "Band"],
         bio: "Humraag is a charismatic host and anchor, bringing energy and professionalism to every event.",
@@ -102,7 +104,6 @@ const artistsData: Artist[] = [
         youtubeVideo : ["83xk79cTFWw","b5b6lIhIb48","RKcKeXMG-EM"],
         introduction: (
             <>
-                <h2>About Humraag</h2>
                 <p>
                     Humraag is a sought-after anchor and host, known for making
                     every event memorable with wit and charm.
@@ -121,6 +122,7 @@ const artistsData: Artist[] = [
     name: "Rishabh Singh Bisht",
     slug: "rishabh-singh-bisht",
     image: rishabhSighBisht,
+    instruments: [],
     artistType: "Musician/Band",
     tags: ["Singer", "Guitarist"],
     bio: "Singer and guitarist performing Hindi and English repertoire across Bollywood and light music genres.",
@@ -153,6 +155,7 @@ const artistsData: Artist[] = [
     name: "Prateek Aggarwal",
     slug: "prateek-aggarwal",
     image: prateekAggarwal,
+    instruments: [],
     artistType: "Musician/Singer",
     tags: ["Singer", "Guitarist", "Ghazal", "Sufi"],
     bio: "Singer-guitarist performing Bollywood, Ghazal, and Sufi",
