@@ -175,12 +175,13 @@ function CardFront({
                     {/* Info pills grid */}
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-2">
                         {[
-                            { icon: "📍", label: "Location", value: artist.location },
+                            { icon: "⭐", label: "Craft Score", value: artist.craftScore != null && artist.craftScore >= 0 ? artist.craftScore.toFixed(1) : undefined },
                             { icon: "🎭", label: "Craft", value: artist.craftType },
-                            { icon: "🌐", label: "Languages", value: artist.language?.join(", ") },
-                            { icon: "🎵", label: "Genre", value: artist.genre?.join(", ") },
+                            { icon: "🎸", label: "Instruments", value: artist.instruments?.join(", ") },
                             { icon: "🎤", label: "Performance", value: artist.performanceType?.join(", ") },
-                            { icon: "⭐", label: "Craft Score", value: artist.craftScore?.toFixed(1) },
+                            { icon: "🎵", label: "Genre", value: artist.genre?.join(", ") },
+                            { icon: "📍", label: "Location", value: artist.location },
+                            { icon: "🌐", label: "Languages", value: artist.language?.join(", ") },
                         ].filter(item => item.value).map(({ icon, label, value }) => (
                             <div
                                 key={label}
