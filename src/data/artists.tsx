@@ -30,7 +30,6 @@ const artistsData: Artist[] = [
         youtubeVideo : ["is54w6i1jJ8","Tn1N7blwpm8","elFOFbgiJwY"],
         introduction: (
             <>
-                <h2>About Aishwarya Sharma</h2>
                 <p>
                     Anchor Aishwarya brings over 3 years of live anchoring experience, 
                     known for her vibrant stage presence and natural flair for connecting with audiences.
@@ -105,7 +104,6 @@ const artistsData: Artist[] = [
         youtubeVideo : ["83xk79cTFWw","b5b6lIhIb48","RKcKeXMG-EM"],
         introduction: (
             <>
-                <h2>About Humraag</h2>
                 <p>
                     Humraag is a sought-after anchor and host, known for making
                     every event memorable with wit and charm.
