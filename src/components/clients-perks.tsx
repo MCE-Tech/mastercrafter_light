@@ -2,7 +2,7 @@
 
 export function ClientsPerks() {
   return (
-    <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
+    <section className="py-8 md:py-12 lg:py-15 relative overflow-hidden">
       <div className="container px-4 md:px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold tracking-tight text-center mb-8 gradient-text">Extra Perks</h2>

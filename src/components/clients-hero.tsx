@@ -14,9 +14,9 @@ export function ClientsHero() {
 
       <div className="container relative z-10">
         <div className="flex flex-col items-center text-center space-y-6 max-w-4xl mx-auto">
-          <div className="relative w-48 h-48">
+          {/* <div className="relative w-48 h-48">
             <img src={logo} alt="Master Crafters Logo" className="object-contain" />
-          </div>
+          </div> */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
             <span className="gradient-text">The Vibe Plan</span> - To Curate Memorable Experience
           </h1>

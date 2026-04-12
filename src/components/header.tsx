@@ -6,6 +6,7 @@ import logo from "../assets/images/logo.png";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [initiativesOpen, setInitiativesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activePath, setActivePath] = useState<string>("/");
 
@@ -15,6 +16,7 @@ export function Header() {
   const navRef = useRef<HTMLElement | null>(null);
   const indicatorRef = useRef<HTMLDivElement | null>(null);
   const servicesRef = useRef<HTMLButtonElement | null>(null);
+  const initiativesRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     setActivePath(location.pathname);
@@ -34,10 +36,16 @@ export function Header() {
       "/services-for-artists",
       "/services-for-clients",
     ].includes(activePath);
+    const isInitiativesPage = [
+      "/our-initiative/vibeveda",
+      "/our-initiative/spotlight-index",
+    ].includes(activePath);
 
     let activeLink: Element | null =
       isServicesPage && servicesRef.current
         ? servicesRef.current
+        : isInitiativesPage && initiativesRef.current
+        ? initiativesRef.current
         : Array.from(navItems).find(
             (link) => link.getAttribute("href") === activePath
           ) ?? null;
@@ -81,9 +89,15 @@ export function Header() {
     };
 
   const isActive = (path: string) => activePath === path;
+  const isOurInitiative = [
+    "/our-initiative", 
+    "/our-initiative/vibeveda", 
+    "/our-initiative/spotlight-index"
+  ].includes(activePath);
   const isServicesActive = [
-    "/services-for-artists",
-    "/services-for-clients",
+    "/our-services",
+    "/our-services/services-for-artists",
+    "/our-services/services-for-clients",
   ].includes(activePath);
 
   return (
@@ -131,20 +145,27 @@ export function Header() {
                 isServicesActive ? "text-blue-700" : "text-gray-700"
               }`}
             >
-              Services
+              <a
+                href="/our-services"
+                onClick={handlePageClick("/our-services")}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
+                Services
+              </a>
+              
             </button>
 
             <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all">
               <a
-                href="/services-for-artists"
-                onClick={handlePageClick("/services-for-artists")}
+                href="/our-services/services-for-artists"
+                onClick={handlePageClick("/our-services/services-for-artists")}
                 className="block px-4 py-2 hover:bg-gray-100"
               >
                 Service for Artists
               </a>
               <a
-                href="/services-for-clients"
-                onClick={handlePageClick("/services-for-clients")}
+                href="/our-services/services-for-clients"
+                onClick={handlePageClick("/our-services/services-for-clients")}
                 className="block px-4 py-2 hover:bg-gray-100"
               >
                 Service for Clients
@@ -162,13 +183,40 @@ export function Header() {
             Our Artists
           </a>
 
-          <a
-            href="#our-initiatives"
-            onClick={handleSectionClick("our-initiatives")}
-            className="text-sm font-medium text-gray-700"
-          >
-            Our Initiatives
-          </a>
+          <div className="relative group">
+            <button
+              ref={initiativesRef}
+              className={`text-sm font-medium flex items-center gap-1 ${
+                isOurInitiative ? "text-blue-700" : "text-gray-700"
+              }`}
+            >
+              <a
+                href="/our-initiative"
+                onClick={handlePageClick("/our-initiative")}
+                className="block px-4 py-2"
+              >
+                Our Initiatives
+              </a>
+              
+            </button>
+
+            <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all">
+              <a
+                href="/our-initiative/vibeveda"
+                onClick={handlePageClick("/our-initiative/vibeveda")}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
+                VibeVeda
+              </a>
+              <a
+                href="/our-initiative/spotlight-index"
+                onClick={handlePageClick("/our-initiative/spotlight-index")}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
+                Spot Light Index
+              </a>
+            </div>
+          </div>
 
           {/* Indicator */}
           <div
@@ -188,7 +236,11 @@ export function Header() {
 
           <button
             className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+              setServicesOpen(false);
+              setInitiativesOpen(false);
+            }}
           >
             {isMenuOpen ? <X /> : <Menu />}
           </button>
@@ -220,18 +272,18 @@ export function Header() {
               </button>
 
               {servicesOpen && (
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-2 p-2">
                   <Link
-                    to="/services-for-artists"
+                    to="/our-services/services-for-artists"
                     onClick={() => setIsMenuOpen(false)}
-                    className="pl-6 py-2 text-gray-700"
+                    className="pl-6 py-3 text-gray-700"
                   >
                     Service for Artists
                   </Link>
                   <Link
-                    to="/services-for-clients"
+                    to="/our-services/services-for-clients"
                     onClick={() => setIsMenuOpen(false)}
-                    className="pl-6 py-2 text-gray-700"
+                    className="pl-6 py-3 text-gray-700"
                   >
                     Service for Clients
                   </Link>
@@ -239,9 +291,9 @@ export function Header() {
               )}
             </div>
 
-            <Link
-              to="/our-artists"
-              onClick={() => setIsMenuOpen(false)}
+            <a
+              href="/our-artists"
+              onClick={handlePageClick("/our-artists")}
               className={`px-4 py-3 rounded-md ${
                 isActive("/our-artists")
                   ? "bg-blue-100 text-blue-700"
@@ -249,15 +301,38 @@ export function Header() {
               }`}
             >
               Our Artists
-            </Link>
-
-            <a
-              href="#our-initiatives"
-              onClick={handleSectionClick("our-initiatives")}
-              className="px-4 py-3 text-gray-700"
-            >
-              Our Initiatives
             </a>
+
+            {/* Initiatives Accordion */}
+            <div>
+              <button
+                onClick={() => setInitiativesOpen(!initiativesOpen)}
+                className="w-full flex justify-between px-4 py-3 font-semibold"
+              >
+                Our Initiatives
+                <span>{initiativesOpen ? "-" : "+"}</span>
+              </button>
+
+              {initiativesOpen && (
+                <div className="flex flex-col gap-2 p-2">
+                  <Link
+                    to="/our-initiative/vibeveda"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="pl-6 py-3 text-gray-700"
+                  >
+                    VibeVeda
+                  </Link>
+                  <Link
+                    to="/our-initiative/spotlight-index"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="pl-6 py-3 text-gray-700"
+                  >
+                    Spotlight Index
+                  </Link>
+                </div>
+              )}
+            </div>
+
 
             <button
               onClick={handleSectionClick("contact-us")}

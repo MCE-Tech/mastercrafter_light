@@ -3,12 +3,20 @@
 import { Button } from "./ui/button"
 import { Music, Users, Calendar, Award, Mic, Headphones } from "lucide-react"
 
-export function ServicesSection() {
+interface ServicesSectionProps {
+  showSkew?: boolean;
+}
+
+export function ServicesSection({ showSkew = true }: ServicesSectionProps) {
   return (
     <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-r from-primary/20 to-secondary/20 transform -skew-y-3" />
-      <div className="absolute bottom-0 right-0 w-full h-20 bg-gradient-to-r from-secondary/20 to-primary/20 transform skew-y-3" />
+      {showSkew && (
+        <>
+          <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-r from-primary/20 to-secondary/20 transform -skew-y-3" />
+          <div className="absolute bottom-0 right-0 w-full h-20 bg-gradient-to-r from-secondary/20 to-primary/20 transform skew-y-3" />
+        </>
+      )}
 
       <div className="container px-4 md:px-6 relative z-10">
         <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center mb-4 gradient-text">Our Services</h2>
@@ -58,7 +66,7 @@ export function ServicesSection() {
                 variant="secondary"
                 size="lg"
                 className="w-full bg-white text-primary hover:bg-white/90"
-                onClick={() => (window.location.href = "/services-for-artists")}
+                onClick={() => (window.location.href = "/our-services/services-for-artists")}
               >
                 Learn More
               </Button>
@@ -106,7 +114,7 @@ export function ServicesSection() {
                 variant="secondary"
                 size="lg"
                 className="w-full bg-white text-secondary hover:bg-white/90"
-                onClick={() => (window.location.href = "/services-for-clients")}
+                onClick={() => (window.location.href = "/our-services/services-for-clients")}
               >
                 Learn More
               </Button>
