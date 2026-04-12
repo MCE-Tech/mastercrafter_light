@@ -10,7 +10,7 @@ const App: React.FC = () => {
             <div className="flex-grow">
                 <AnimatedBackground />
                 <Header />
-                <main className="mt-16">
+                <main className="">
                     <Outlet />
                 </main>
             </div>

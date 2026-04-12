@@ -2,62 +2,7 @@ import React from "react";
 import { AnimatedBackground } from "../components/animated-background";
 import { Link } from "react-router-dom";
 import { ScoreRing } from "../components/ScoreRing";
-
-// Example artist data (replace with real data or props/fetch in future)
-import anchorAishwarya from "../assets/images/anchor-aishwarya.png";
-import gaurangSahu from "../assets/images/gaurang-sahu.png";
-import humraag from "../assets/images/humraag.png";
-import rishabhSighBisht from "../assets/images/rishabh-singh-bisht.jpg";
-import prateekAggarwal from "../assets/images/prateek-aggarwal.jpg";
-
-const ARTISTS = [
-  {
-    id: 2,
-    name: "Gaurang Sahu",
-    slug: "gaurang-sahu",
-    image: gaurangSahu,
-    artistType: "Musician/Instrumentalist",
-    tags: ["Guitarist", "Composer", "Live"],
-    score: 92,
-  },
-  {
-    id: 3,
-    name: "Humraag",
-    slug: "humraag",
-    image: humraag,
-    artistType: "Musician/Band",
-    tags: ["Vocalist", "Performer", "Indie"],
-    score: 88,
-  },
-  {
-    id: 4,
-    name: "Rishabh Singh Bisht",
-    slug: "rishabh-singh-bisht",
-    image: rishabhSighBisht,
-    artistType: "Musician/Band",
-    tags: ["Guitarist", "Composer", "Live"],
-    score: 80,
-  },
-  {
-    id: 5,
-    name: "Prateek Aggarwal",
-    slug: "prateek-aggarwal",
-    image: prateekAggarwal,
-    artistType: "Musician/Singer",
-    tags: ["Singer", "Guitarist"],
-    score: 68,
-  },
-  {
-    id: 1,
-    name: "Aishwarya Sharma",
-    slug: "aishwarya-sharma",
-    image: anchorAishwarya,
-    artistType: "Anchor",
-  tags: ["Host", "Anchor", "Events"],
-  score: 0,
-  },
-  // Add more artists as needed
-];
+import { ARTISTS } from "../data/artistOverview";
 
 export default function OurArtistsPage() {
   return (
@@ -72,10 +17,10 @@ export default function OurArtistsPage() {
               <Link
                 to={`/artist/${artist.slug}`}
                 key={artist.id}
-                className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center text-center hover:shadow-2xl transition-shadow no-underline"
+                className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center text-center hover:shadow-2xl transition-shadow no-underline h-full"
                 style={{ color: 'inherit' }}
               >
-                <div className="mb-2">
+                <div className="mb-2 flex justify-center">
                   <img
                     src={artist.image}
                     alt={artist.name}
@@ -85,10 +30,10 @@ export default function OurArtistsPage() {
                 <h2 className="text-xl font-bold mb-1 mt-4 h-6 flex items-center justify-center w-full truncate" style={{minHeight:'1.5rem'}}>
                   {artist.name.split(' ')[0]}
                 </h2>
-                <p className="mb-2 text-sm text-muted-foreground">
+                <p className="mb-2 text-sm text-muted-foreground w-full">
                   {artist.artistType}
                 </p>
-                <div className="flex flex-wrap gap-2 justify-center mb-2">
+                <div className="flex flex-wrap gap-2 justify-center mb-2 w-full">
                   {artist.tags.map((tag, idx) => (
                     <span
                       key={idx}
@@ -99,9 +44,9 @@ export default function OurArtistsPage() {
                   ))}
                 </div>
                 {artist.score !== undefined && artist.score !== null && artist.score !== 0 && (
-                  <div className="flex flex-col items-center mt-1">
-                    <span className="text-xs text-muted-foreground mb-1">Splotlight Index</span>
-                    <div className="flex justify-center">
+                  <div className="flex flex-col items-center justify-center mt-1 w-full">
+                    <span className="text-xs text-muted-foreground mb-1">Craft Score</span>
+                    <div className="flex justify-center w-full">
                       <ScoreRing score={artist.score} />
                     </div>
                   </div>

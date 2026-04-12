@@ -213,6 +213,36 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* Client Card Styles */
+.card-clients {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.88) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(130, 85, 229, 0.3);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px rgba(130, 85, 229, 0.12), inset 0 0 20px rgba(255, 20, 147, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-clients:hover {
+  border-color: rgba(255, 20, 147, 0.5);
+  box-shadow: 0 12px 35px rgba(130, 85, 229, 0.22), inset 0 0 20px rgba(255, 20, 147, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Icon Container in Cards */
+.icon-clients {
+  background: linear-gradient(135deg, #8255E5 0%, #FF1493 100%);
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 15px rgba(130, 85, 229, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-clients:hover .icon-clients {
+  box-shadow: 0 6px 25px rgba(130, 85, 229, 0.4);
+  transform: scale(1.08);
+}
+
 /* Music Notes Background */
 .music-notes-bg {
   background-color: #f0f0f0;

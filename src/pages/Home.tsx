@@ -46,10 +46,10 @@ export default function HomePage() {
         <VisionMission />
         <CoreValues />
         <div id="our-initiatives">
-          <InitiativesSection/>
+          <InitiativesSection showSkew={true} />
         </div>
         <div id="our-services">
-          <ServicesSection />
+          <ServicesSection showSkew={true} />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-20">
           <ArtistsSection />
