@@ -34,7 +34,7 @@ export default function OurArtistsPage() {
                   {artist.artistType}
                 </p>
                 <div className="flex flex-wrap gap-2 justify-center mb-2 w-full">
-                  {artist.tags.map((tag, idx) => (
+                  {artist.tags.map((tag: string, idx: number) => (
                     <span
                       key={idx}
                       className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
