@@ -18,7 +18,6 @@ import AdminGuard from './components/AdminGuard';
 import IndividualArtistPage from "./pages/IndividualArtistPage";
 import ArtistDetailsPage from "./pages/ArtistDetailsPage";
 import ServicesPage from './pages/ServicesPage';
-import InitiativesPage from './pages/InitiativesPage';
 
 const router = createBrowserRouter(
       createRoutesFromElements(
