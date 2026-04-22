@@ -50,6 +50,9 @@ export default function StickyArtistHeader({
                     <div>
                         <span className="block text-base md:text-lg font-bold text-primary leading-tight">
                             {artist.name}
+                            <span className="hidden md:block text-sm text-muted-foreground font-semibold mt-1 md:mt-0">
+                                {artist.artistType}
+                            </span>
                         </span>
 
                         <div className="flex flex-wrap gap-1 mt-1">
@@ -64,9 +67,7 @@ export default function StickyArtistHeader({
                         </div>
                     </div>
 
-                    <span className="hidden md:block text-sm text-muted-foreground font-semibold mt-1 md:mt-0">
-                        {artist.artistType}
-                    </span>
+                    
                 </div>
 
                 {/* Book Artist Button */}
@@ -95,7 +96,7 @@ export default function StickyArtistHeader({
                     }}
                 >
                     <span className="text-sm md:text-base">📅</span>
-                    <span className="hidden sm:inline">Book Artist</span>
+                    <span className="text-sm md:text-base">Hire</span>
                 </button>
             </div>
         </div>

@@ -9,7 +9,7 @@ export function ClientsFeatures() {
             Why <span className="text-[#ff1493]">Clients Choose</span> Master Crafters
           </h2>
 
-          <div className="space-y-8">
+          <div className="space-y-4">
             <div className="card-clients rounded-xl p-6 transition-all duration-200 hover:shadow-lg">
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 rounded-full icon-clients">

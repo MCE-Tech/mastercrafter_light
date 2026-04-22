@@ -5,7 +5,7 @@ import AnimatedWave from "./AnimatedWave";
 
 export function ServicesHero() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-24 lg:py-28">
+    <section className="relative overflow-hidden py-20 md:py-20 lg:py-20">
       {/* Animated background */}
       <div className="absolute inset-0 animated-bg opacity-20" />
 
@@ -18,19 +18,20 @@ export function ServicesHero() {
       <div className="container relative z-10">
         <div className="flex flex-col items-center text-center space-y-6 max-w-4xl mx-auto">
           {/* Logo */}
-          <div className="relative w-48 h-48">
+          {/* <div className="relative w-48 h-48">
             <img
               src={logo}
               alt="Master Crafters Logo"
               className="object-contain w-full h-full"
             />
-          </div>
+          </div> */}
 
           {/* Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
-            <span className="gradient-text">The Artist Route</span> - Journey to Dreams
-          </h1>
-
+          <div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
+              <span className="gradient-text">The Artist Route</span> - Journey to Dreams
+            </h1>
+          </div>
           {/* Icons */}
           <div className="flex items-center justify-center gap-4">
             <div className="p-2 rounded-full bg-primary/20">

@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
 
               <li>
                 <Link
-                  to="/services-for-artists"
+                  to="/our-services/services-for-artists"
                   className="flex items-center justify-center md:justify-start gap-2 hover:text-secondary transition"
                 >
                   <Headphones className="h-4 w-4" />
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
 
               <li>
                 <Link
-                  to="/services-for-clients"
+                  to="/our-services/services-for-clients"
                   className="flex items-center justify-center md:justify-start gap-2 hover:text-secondary transition"
                 >
                   <Music className="h-4 w-4" />

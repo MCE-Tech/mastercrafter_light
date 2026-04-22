@@ -48,15 +48,15 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
                     }
                 }
             `}</style>
-            <div className="artist-action-buttons m-auto mt-6 mb-4 flex md:flex-row gap-3 justify-center md:justify-start">
-                {/* View Videos — outlined ghost style with secondary color */}
+            <div className="artist-action-buttons m-auto mt-6 mb-4 flex flex-col sm:flex-row gap-3 justify-center w-full px-2">
+                {/* View Videos */}
                 <button
                     onClick={() => {
                         document.getElementById("view-playlist-button")?.scrollIntoView({
                             behavior: "smooth"
                         });
                     }}
-                    className="group flex items-center justify-center gap-2 px-5 py-2 rounded-full font-semibold text-base whitespace-nowrap transition-all duration-200 active:scale-95 border-2 border-secondary text-secondary"
+                    className="group flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base w-full sm:w-auto transition-all duration-200 active:scale-95 border-2 border-secondary text-secondary"
                     style={{
                         background: "transparent",
                         boxShadow: "0 0 0 0 transparent",
@@ -79,9 +79,9 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
                     View Videos
                 </button>
 
-                {/* Book Artist — gradient primary with glow */}
+                {/* Book Artist */}
                 <button
-                    className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-semibold text-base whitespace-nowrap active:scale-95 text-primary border-2 border-primary"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base w-full sm:w-auto active:scale-95 text-primary border-2 border-primary"
                     style={{
                         background: "linear-gradient(135deg, var(--primary) 0%, color-mix(in srgb, var(--primary) 70%, #a855f7) 100%)",
                         boxShadow: "0 4px 20px 0 color-mix(in srgb, var(--primary) 40%, transparent)",
@@ -98,16 +98,16 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
                         (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px 0 color-mix(in srgb, var(--primary) 40%, transparent)";
                         (e.currentTarget as HTMLButtonElement).style.color = "#a855f7";
                         (e.currentTarget as HTMLButtonElement).style.borderColor = "#a855f7";
-                   }}
+                    }}
                     onClick={() => {
-                        const phoneNumber = "918329303275"; // your WhatsApp Business number
+                        const phoneNumber = "918329303275";
                         const message = `Hi, I want to book ${artist.name} for an event. Please share pricing & availability.`;
                         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                         window.open(url, "_blank");
                     }}
                 >
                     <span>📅</span>
-                    Book Artist
+                    Hire Me
                 </button>
             </div>
         </div>

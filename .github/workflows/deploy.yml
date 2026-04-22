@@ -36,3 +36,18 @@ jobs:
           source: "build/*"
           target: "/var/www/html"
           strip_components: 1 # Removes the 'build/' folder prefix so files land directly in /html
+
+      - name: Execute Remote SSH Commands
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Update both API and Auth URLs in one go
+            sed -i -e 's|WWW_URL_PLACEHOLDER|www.mastercrafters.in|g' \
+                   -e 's|URL_PLACEHOLDER|mastercrafters.in|g' \
+                   /var/www/html/vite.config.js
+            
+            sudo systemctl restart nginx
+

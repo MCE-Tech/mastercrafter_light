@@ -2,12 +2,23 @@
 
 import { Button } from "./ui/button"
 import { Mic, Users, Heart, Star } from "lucide-react"
+import { useState } from "react"
 
-export function InitiativesSection() {
+interface InitiativesSectionProps {
+  showSkew?: boolean;
+}
+
+export function InitiativesSection({ showSkew = true }: InitiativesSectionProps) {
+  const [selectedInitiative, setSelectedInitiative] = useState<"vibeveda" | "spotlight">("vibeveda")
   return (
     <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
       {/* Decorative elements - Reused for consistency */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-r from-primary/20 to-secondary/20 transform -skew-y-3" />
+      {showSkew && (
+        <>
+          <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-r from-primary/20 to-secondary/20 transform -skew-y-3" />
+          <div className="absolute bottom-0 right-0 w-full h-20 bg-gradient-to-r from-secondary/20 to-primary/20 transform skew-y-3" />
+        </>
+      )}
 
       <div className="container px-4 md:px-6 relative z-10">
         <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center mb-4 gradient-text">Our Initiatives</h2>
@@ -15,8 +26,10 @@ export function InitiativesSection() {
           Driving change and fostering growth in the creative community
         </p>
 
+
         <div className="grid gap-8 md:grid-cols-2">
           {/* Initiative 1: VibeVeda: An Open Mic & Jam Night */}
+          {selectedInitiative === "vibeveda" && (
           <div className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-br from-secondary to-rose-500 opacity-90 z-0" />
             <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=800')] bg-cover bg-center mix-blend-overlay opacity-20" />
@@ -59,13 +72,13 @@ export function InitiativesSection() {
                 variant="secondary"
                 size="lg"
                 className="w-full bg-white text-purple-600 hover:bg-white/90"
-                onClick={() => (window.location.href = "/vibeveda")}
+                onClick={() => (window.location.href = "/our-initiative/vibeveda")}
               >
                 Learn More
               </Button>
             </div>
           </div>
-
+          )}
           {/* Initiative 2: The Spotlight Index: Empowering Artists, Assuring Clients */}
           <div className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-2xl">
             {/* Changed gradient from green to blue */}
@@ -110,7 +123,7 @@ export function InitiativesSection() {
                 variant="secondary"
                 size="lg"
                 className="w-full bg-white text-blue-600 hover:bg-white/90" // Changed text color to match new gradient
-                onClick={() => (window.location.href = "/spotlight-index")}
+                onClick={() => (window.location.href = "/our-initiative/spotlight-index")}
               >
                 Learn More
               </Button>

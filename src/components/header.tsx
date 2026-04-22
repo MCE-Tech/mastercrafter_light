@@ -1,13 +1,21 @@
 ﻿import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Mail, Menu, Music, Phone, X } from "lucide-react";
 import logo from "../assets/images/logo.png";
+import {
+  Dialog,
+  DialogContent,
+} from "./ui/dialog";
+import { Button } from "./ui/button";
+import { ContactInfo } from "./ui/contact-info";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [initiativesOpen, setInitiativesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activePath, setActivePath] = useState<string>("/");
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,6 +23,7 @@ export function Header() {
   const navRef = useRef<HTMLElement | null>(null);
   const indicatorRef = useRef<HTMLDivElement | null>(null);
   const servicesRef = useRef<HTMLButtonElement | null>(null);
+  const initiativesRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     setActivePath(location.pathname);
@@ -34,10 +43,16 @@ export function Header() {
       "/services-for-artists",
       "/services-for-clients",
     ].includes(activePath);
+    const isInitiativesPage = [
+      "/our-initiative/vibeveda",
+      "/our-initiative/spotlight-index",
+    ].includes(activePath);
 
     let activeLink: Element | null =
       isServicesPage && servicesRef.current
         ? servicesRef.current
+        : isInitiativesPage && initiativesRef.current
+        ? initiativesRef.current
         : Array.from(navItems).find(
             (link) => link.getAttribute("href") === activePath
           ) ?? null;
@@ -65,25 +80,32 @@ export function Header() {
       setIsMenuOpen(false);
     };
 
-  const handleSectionClick =
-    (sectionId: string) => (e: React.MouseEvent) => {
-      e.preventDefault();
-      setActivePath("/");
-      navigate("/");
-      setIsMenuOpen(false);
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
 
-      setTimeout(() => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 150);
-    };
+    if (location.pathname === "/") {
+      setActivePath("/");
+      const section = document.getElementById("contact-us");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+
+    setIsContactDialogOpen(true);
+  };
 
   const isActive = (path: string) => activePath === path;
+  const isOurInitiative = [
+    "/our-initiative", 
+    "/our-initiative/vibeveda", 
+    "/our-initiative/spotlight-index"
+  ].includes(activePath);
   const isServicesActive = [
-    "/services-for-artists",
-    "/services-for-clients",
+    "/our-services",
+    "/our-services/services-for-artists",
+    "/our-services/services-for-clients",
   ].includes(activePath);
 
   return (
@@ -116,11 +138,21 @@ export function Header() {
           <a
             href="/"
             onClick={handlePageClick("/")}
-            className={`text-sm font-medium ${
+            className={`px-2 py-2 text-sm font-medium ${
               isActive("/") ? "text-blue-700" : "text-gray-700"
             }`}
           >
             Home
+          </a>
+
+          <a
+            href="/our-artists"
+            onClick={handlePageClick("/our-artists")}
+            className={`px-2 py-2 text-sm font-medium ${
+              isActive("/our-artists") ? "text-blue-700" : "text-gray-700"
+            }`}
+          >
+            Our Artists
           </a>
 
           {/* Services */}
@@ -131,20 +163,27 @@ export function Header() {
                 isServicesActive ? "text-blue-700" : "text-gray-700"
               }`}
             >
-              Services
+              <a
+                href="/our-services"
+                onClick={handlePageClick("/our-services")}
+                className="block px-2 py-2"
+              >
+                Services
+              </a>
+              
             </button>
 
             <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all">
               <a
-                href="/services-for-artists"
-                onClick={handlePageClick("/services-for-artists")}
-                className="block px-4 py-2 hover:bg-gray-100"
+                href="/our-services/services-for-artists"
+                onClick={handlePageClick("/our-services/services-for-artists")}
+                className="block px-2 py-2 hover:bg-gray-100"
               >
                 Service for Artists
               </a>
               <a
-                href="/services-for-clients"
-                onClick={handlePageClick("/services-for-clients")}
+                href="/our-services/services-for-clients"
+                onClick={handlePageClick("/our-services/services-for-clients")}
                 className="block px-4 py-2 hover:bg-gray-100"
               >
                 Service for Clients
@@ -152,23 +191,40 @@ export function Header() {
             </div>
           </div>
 
-          <a
-            href="/our-artists"
-            onClick={handlePageClick("/our-artists")}
-            className={`text-sm font-medium ${
-              isActive("/our-artists") ? "text-blue-700" : "text-gray-700"
-            }`}
-          >
-            Our Artists
-          </a>
+          <div className="relative group">
+            <button
+              ref={initiativesRef}
+              className={`text-sm font-medium flex items-center gap-1 ${
+                isOurInitiative ? "text-blue-700" : "text-gray-700"
+              }`}
+            >
+              <a
+                href="/our-initiative"
+                onClick={handlePageClick("/our-initiative")}
+                className="block px-2 py-2"
+              >
+                Our Initiatives
+              </a>
+              
+            </button>
 
-          <a
-            href="#our-initiatives"
-            onClick={handleSectionClick("our-initiatives")}
-            className="text-sm font-medium text-gray-700"
-          >
-            Our Initiatives
-          </a>
+            <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all">
+              <a
+                href="/our-initiative/vibeveda"
+                onClick={handlePageClick("/our-initiative/vibeveda")}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
+                VibeVeda
+              </a>
+              <a
+                href="/our-initiative/spotlight-index"
+                onClick={handlePageClick("/our-initiative/spotlight-index")}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
+                Spot Light Index
+              </a>
+            </div>
+          </div>
 
           {/* Indicator */}
           <div
@@ -180,7 +236,7 @@ export function Header() {
         {/* Right */}
         <div className="flex items-center gap-2">
           <button
-            onClick={handleSectionClick("contact-us")}
+            onClick={handleContactClick}
             className="hidden md:block bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-4 py-2 rounded-md"
           >
             Contact Us
@@ -188,7 +244,11 @@ export function Header() {
 
           <button
             className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+              setServicesOpen(false);
+              setInitiativesOpen(false);
+            }}
           >
             {isMenuOpen ? <X /> : <Menu />}
           </button>
@@ -220,18 +280,18 @@ export function Header() {
               </button>
 
               {servicesOpen && (
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-2 p-2">
                   <Link
-                    to="/services-for-artists"
+                    to="/our-services/services-for-artists"
                     onClick={() => setIsMenuOpen(false)}
-                    className="pl-6 py-2 text-gray-700"
+                    className="pl-6 py-3 text-gray-700"
                   >
                     Service for Artists
                   </Link>
                   <Link
-                    to="/services-for-clients"
+                    to="/our-services/services-for-clients"
                     onClick={() => setIsMenuOpen(false)}
-                    className="pl-6 py-2 text-gray-700"
+                    className="pl-6 py-3 text-gray-700"
                   >
                     Service for Clients
                   </Link>
@@ -239,9 +299,9 @@ export function Header() {
               )}
             </div>
 
-            <Link
-              to="/our-artists"
-              onClick={() => setIsMenuOpen(false)}
+            <a
+              href="/our-artists"
+              onClick={handlePageClick("/our-artists")}
               className={`px-4 py-3 rounded-md ${
                 isActive("/our-artists")
                   ? "bg-blue-100 text-blue-700"
@@ -249,18 +309,41 @@ export function Header() {
               }`}
             >
               Our Artists
-            </Link>
-
-            <a
-              href="#our-initiatives"
-              onClick={handleSectionClick("our-initiatives")}
-              className="px-4 py-3 text-gray-700"
-            >
-              Our Initiatives
             </a>
 
+            {/* Initiatives Accordion */}
+            <div>
+              <button
+                onClick={() => setInitiativesOpen(!initiativesOpen)}
+                className="w-full flex justify-between px-4 py-3 font-semibold"
+              >
+                Our Initiatives
+                <span>{initiativesOpen ? "-" : "+"}</span>
+              </button>
+
+              {initiativesOpen && (
+                <div className="flex flex-col gap-2 p-2">
+                  <Link
+                    to="/our-initiative/vibeveda"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="pl-6 py-3 text-gray-700"
+                  >
+                    VibeVeda
+                  </Link>
+                  <Link
+                    to="/our-initiative/spotlight-index"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="pl-6 py-3 text-gray-700"
+                  >
+                    Spotlight Index
+                  </Link>
+                </div>
+              )}
+            </div>
+
+
             <button
-              onClick={handleSectionClick("contact-us")}
+              onClick={handleContactClick}
               className="mt-2 bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-4 py-3 rounded-md"
             >
               Contact Us
@@ -268,6 +351,58 @@ export function Header() {
           </nav>
         </div>
       )}
+
+      <Dialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
+        <DialogContent className="overflow-hidden border-0 bg-transparent p-0 shadow-none sm:max-w-2xl">
+          <div className="relative rounded-3xl bg-gradient-to-r from-primary to-secondary p-8 text-center shadow-2xl md:p-12">
+            <div className="absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-white/10" />
+            <div className="absolute bottom-0 left-0 h-24 w-24 -translate-x-12 translate-y-12 rounded-full bg-white/10" />
+
+            <div className="relative flex flex-col items-center space-y-6">
+              <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm">
+                <Music className="h-8 w-8 text-white" />
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+                  Ready to Book the Right Artist?
+                </h2>
+                <p className="mx-auto max-w-2xl text-white/80">
+                  Planning a performance or hosting an event? Get in touch for availability, pricing, and customized options tailored to your needs.
+                </p>
+              </div>
+
+              <div className="flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
+                <Button
+                  className="gap-2 bg-white text-primary hover:bg-white/90"
+                  onClick={() => window.location.href = "mailto:mastercrafters.ent@gmail.com"}
+                >
+                  <Mail className="h-4 w-4" />
+                  <span>Email Us</span>
+                </Button>
+                <Button
+                  className="gap-2 bg-white text-primary hover:bg-white/90"
+                  onClick={() => window.location.href = "tel:+918329303275"}
+                >
+                  <Phone className="h-4 w-4" />
+                  <span>Call Us</span>
+                </Button>
+              </div>
+
+              <ContactInfo className="mt-2" />
+
+              <a
+                href="https://wa.me/918329303275?text=Hi%20MasterCrafters%2C%20I%20want%20to%20book%20an%20artist"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-md bg-white/15 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </header>
   );
 }

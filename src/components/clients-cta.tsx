@@ -16,11 +16,12 @@ export function ClientsCTA() {
         >
           <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-[#a259e2] to-[#ff1493] opacity-90"></div>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Button className="gap-2 px-8 py-3 text-lg font-bold bg-gradient-to-r from-[#a259e2] to-[#ff1493] text-white shadow-lg hover:from-[#7a1fd2] hover:to-[#e13ecb] transition-all duration-200">Avail your benefit Now !</Button>
+            <Button className="gap-2 px-8 py-3 text-lg font-bold bg-gradient-to-r from-[#a259e2] to-[#ff1493] text-white shadow-lg hover:from-[#7a1fd2] hover:to-[#e13ecb] transition-all duration-200">
+              <a href="http://docs.google.com/forms/d/e/1FAIpQLSfI2q_Stp5_nttvzHm-FuXpw_N-NEDub73R4cBdmEpBjbJvRA/viewform" target="_blank" rel="noopener noreferrer">
+                Avail your benefit Now !
+              </a>
+            </Button>
           </div>
-
-          <ContactInfo className="mt-8" />
-          <SocialLinks className="mt-4" />
         </CTASectionLayout>
       </div>
     </section>

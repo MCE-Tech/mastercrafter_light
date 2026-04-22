@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { AnimatedBackground } from "../components/animated-background";
 import PlaylistVideos from "../components/PlaylistVideos";
 import StickyArtistHeader from "../components/StickyArtistHeader";
@@ -63,6 +63,11 @@ export default function ArtistProfilePage() {
     const { artist } = useArtist();
     const heroRef = useRef<HTMLDivElement>(null);
     const showSticky = useShowStickyHeader(heroRef);
+
+    // Scroll to top when component mounts or artist changes
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [artist]);
 
     if (!artist) {
         return <ArtistNotFound />;
