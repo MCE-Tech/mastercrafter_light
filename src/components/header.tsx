@@ -1,7 +1,13 @@
 ﻿import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Mail, Menu, Music, Phone, X } from "lucide-react";
 import logo from "../assets/images/logo.png";
+import {
+  Dialog,
+  DialogContent,
+} from "./ui/dialog";
+import { Button } from "./ui/button";
+import { ContactInfo } from "./ui/contact-info";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +15,7 @@ export function Header() {
   const [initiativesOpen, setInitiativesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activePath, setActivePath] = useState<string>("/");
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -73,20 +80,21 @@ export function Header() {
       setIsMenuOpen(false);
     };
 
-  const handleSectionClick =
-    (sectionId: string) => (e: React.MouseEvent) => {
-      e.preventDefault();
-      setActivePath("/");
-      navigate("/");
-      setIsMenuOpen(false);
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
 
-      setTimeout(() => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 150);
-    };
+    if (location.pathname === "/") {
+      setActivePath("/");
+      const section = document.getElementById("contact-us");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+
+    setIsContactDialogOpen(true);
+  };
 
   const isActive = (path: string) => activePath === path;
   const isOurInitiative = [
@@ -130,11 +138,21 @@ export function Header() {
           <a
             href="/"
             onClick={handlePageClick("/")}
-            className={`text-sm font-medium ${
+            className={`px-2 py-2 text-sm font-medium ${
               isActive("/") ? "text-blue-700" : "text-gray-700"
             }`}
           >
             Home
+          </a>
+
+          <a
+            href="/our-artists"
+            onClick={handlePageClick("/our-artists")}
+            className={`px-2 py-2 text-sm font-medium ${
+              isActive("/our-artists") ? "text-blue-700" : "text-gray-700"
+            }`}
+          >
+            Our Artists
           </a>
 
           {/* Services */}
@@ -148,7 +166,7 @@ export function Header() {
               <a
                 href="/our-services"
                 onClick={handlePageClick("/our-services")}
-                className="block px-4 py-2 hover:bg-gray-100"
+                className="block px-2 py-2"
               >
                 Services
               </a>
@@ -159,7 +177,7 @@ export function Header() {
               <a
                 href="/our-services/services-for-artists"
                 onClick={handlePageClick("/our-services/services-for-artists")}
-                className="block px-4 py-2 hover:bg-gray-100"
+                className="block px-2 py-2 hover:bg-gray-100"
               >
                 Service for Artists
               </a>
@@ -173,16 +191,6 @@ export function Header() {
             </div>
           </div>
 
-          <a
-            href="/our-artists"
-            onClick={handlePageClick("/our-artists")}
-            className={`text-sm font-medium ${
-              isActive("/our-artists") ? "text-blue-700" : "text-gray-700"
-            }`}
-          >
-            Our Artists
-          </a>
-
           <div className="relative group">
             <button
               ref={initiativesRef}
@@ -193,7 +201,7 @@ export function Header() {
               <a
                 href="/our-initiative"
                 onClick={handlePageClick("/our-initiative")}
-                className="block px-4 py-2"
+                className="block px-2 py-2"
               >
                 Our Initiatives
               </a>
@@ -228,7 +236,7 @@ export function Header() {
         {/* Right */}
         <div className="flex items-center gap-2">
           <button
-            onClick={handleSectionClick("contact-us")}
+            onClick={handleContactClick}
             className="hidden md:block bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-4 py-2 rounded-md"
           >
             Contact Us
@@ -335,7 +343,7 @@ export function Header() {
 
 
             <button
-              onClick={handleSectionClick("contact-us")}
+              onClick={handleContactClick}
               className="mt-2 bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-4 py-3 rounded-md"
             >
               Contact Us
@@ -343,6 +351,58 @@ export function Header() {
           </nav>
         </div>
       )}
+
+      <Dialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
+        <DialogContent className="overflow-hidden border-0 bg-transparent p-0 shadow-none sm:max-w-2xl">
+          <div className="relative rounded-3xl bg-gradient-to-r from-primary to-secondary p-8 text-center shadow-2xl md:p-12">
+            <div className="absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-white/10" />
+            <div className="absolute bottom-0 left-0 h-24 w-24 -translate-x-12 translate-y-12 rounded-full bg-white/10" />
+
+            <div className="relative flex flex-col items-center space-y-6">
+              <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm">
+                <Music className="h-8 w-8 text-white" />
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+                  Ready to Book the Right Artist?
+                </h2>
+                <p className="mx-auto max-w-2xl text-white/80">
+                  Planning a performance or hosting an event? Get in touch for availability, pricing, and customized options tailored to your needs.
+                </p>
+              </div>
+
+              <div className="flex w-full flex-col gap-4 sm:flex-row sm:justify-center">
+                <Button
+                  className="gap-2 bg-white text-primary hover:bg-white/90"
+                  onClick={() => window.location.href = "mailto:mastercrafters.ent@gmail.com"}
+                >
+                  <Mail className="h-4 w-4" />
+                  <span>Email Us</span>
+                </Button>
+                <Button
+                  className="gap-2 bg-white text-primary hover:bg-white/90"
+                  onClick={() => window.location.href = "tel:+918329303275"}
+                >
+                  <Phone className="h-4 w-4" />
+                  <span>Call Us</span>
+                </Button>
+              </div>
+
+              <ContactInfo className="mt-2" />
+
+              <a
+                href="https://wa.me/918329303275?text=Hi%20MasterCrafters%2C%20I%20want%20to%20book%20an%20artist"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-md bg-white/15 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </header>
   );
 }

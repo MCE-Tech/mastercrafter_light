@@ -11,15 +11,8 @@ const paramGroups = [
     colorText: "text-blue-500",
     colorBg: "bg-blue-500/10",
     colorBorder: "border-blue-500/30",
-    params: [
-      { name: "Vocal Skills", desc: "Pitch, control, and expressive range" },
-      { name: "Instrumental Skills", desc: "Skill and synergy of musicians / instrumentalists" },
-      { name: "Song Arrangement", desc: "Smooth transitions and creative flow of the set" },
-      { name: "Stage Presence", desc: "Charisma, body language, audience engagement" },
-      { name: "Crowd Engagement", desc: "Interaction, vibe, and connection with the audience" },
-      { name: "Song Choices", desc: "Relevance to event vibe and crowd expectations" },
-      { name: "Sound Setup Management", desc: "Handling of live sound, mic check, and simulated issues" },
-    ],
+    description:
+      "We evaluate the full spectrum of what makes a live performance exceptional — from raw vocal and instrumental ability to how seamlessly the set flows. This domain covers song arrangement, stage presence, crowd engagement, song selection, and live sound management, rewarding artists who deliver a cohesive, well-crafted experience from the first note to the last.",
   },
   {
     id: "professionalism",
@@ -29,10 +22,8 @@ const paramGroups = [
     colorText: "text-purple-500",
     colorBg: "bg-purple-500/10",
     colorBorder: "border-purple-500/30",
-    params: [
-      { name: "Professionalism", desc: "Respectful behavior, communication, and preparedness" },
-      { name: "Punctuality", desc: "Timely arrival, setup, and readiness for performance" },
-    ],
+    description:
+      "Great artists show up ready — mentally, physically, and logistically. This domain looks at how an artist conducts themselves before, during, and after the event: their communication, preparedness, respect for the organiser and audience, and whether they arrived on time and set up without friction. Professionalism isn't a soft metric — it directly shapes the event experience.",
   },
   {
     id: "impact",
@@ -42,11 +33,8 @@ const paramGroups = [
     colorText: "text-emerald-500",
     colorBg: "bg-emerald-500/10",
     colorBorder: "border-emerald-500/30",
-    params: [
-      { name: "Audience Reaction", desc: "Real-time crowd energy and sustained attention" },
-      { name: "Adaptability", desc: "Handling requests, tech issues, or unexpected mood shifts" },
-      { name: "Reality Check", desc: "Alignment between live performance and online portfolio" },
-    ],
+    description:
+      "Talent means little if it doesn't land. This domain measures the real-time effect of the performance — crowd energy, sustained attention, and how the artist handled the unexpected. It also holds artists accountable to their portfolio: your live show should reflect what you've put out online. Consistency between promise and delivery is what builds long-term trust with event organisers.",
   },
 ]
 
@@ -91,7 +79,7 @@ export function SpotlightCraftScore() {
               <div
                 key={g.id}
                 className={`rounded-xl border transition-all duration-200 overflow-hidden ${
-                  open === g.id ? `${g.colorBorder}` : "border-border"
+                  open === g.id ? g.colorBorder : "border-border"
                 }`}
               >
                 <button
@@ -115,22 +103,10 @@ export function SpotlightCraftScore() {
                 </button>
 
                 {open === g.id && (
-                  <div className="px-5 pb-4 border-t border-border bg-secondary/5">
-                    <div className="divide-y divide-border">
-                      {g.params.map((p) => (
-                        <div key={p.name} className="flex items-start justify-between py-3 gap-4">
-                          <div>
-                            <p className="text-sm font-medium">{p.name}</p>
-                            <p className="text-xs text-muted-foreground mt-0.5">{p.desc}</p>
-                          </div>
-                          <span
-                            className={`flex-shrink-0 text-xs font-bold px-2 py-1 rounded ${g.colorBg} ${g.colorText}`}
-                          >
-                            /10
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="px-5 py-4 border-t border-border bg-secondary/5">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {g.description}
+                    </p>
                   </div>
                 )}
               </div>

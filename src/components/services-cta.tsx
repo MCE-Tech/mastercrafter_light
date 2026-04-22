@@ -1,7 +1,5 @@
 ﻿import { Button } from "./ui/button"
 import { CTASectionLayout } from "./ui/cta-section-layout"
-import { ContactInfo } from "./ui/contact-info"
-import { SocialLinks } from "./ui/social-links"
 
 export function ServicesCTA() {
   return (
@@ -17,7 +15,9 @@ export function ServicesCTA() {
           <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-[#8a2be2] to-[#ff1493] opacity-90"></div>
           <div className="flex flex-col sm:flex-row gap-4 mt-6 items-center sm:justify-center w-full">
             <Button className="w-full sm:w-auto gap-2 px-6 sm:px-8 py-3 text-base sm:text-lg font-bold bg-gradient-to-r from-[#8a2be2] to-[#ff1493] text-white shadow-lg hover:from-[#7a1fd2] hover:to-[#e13ecb] transition-all duration-200">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQlBI1MNOcd3P8dmd7rZunX_lEega65maesf0ubE4-G_Z5Pg/viewform" target="_blank" rel="noopener noreferrer">
               Click here to Buy Artist Membership Plan
+              </a>
             </Button>
           </div>
           
@@ -25,8 +25,6 @@ export function ServicesCTA() {
 
           <p className="text-white/80">Let's take your music career to the next level.</p>
 
-          <ContactInfo className="mt-8" />
-          <SocialLinks className="mt-4" />
         </CTASectionLayout>
       </div>
     </section>

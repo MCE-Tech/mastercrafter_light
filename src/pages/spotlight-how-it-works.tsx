@@ -33,11 +33,11 @@ const steps = [
     title: "Craft Score Published",
     desc: "Your Craft Score (out of 100) is calculated and published on your Master Crafters profile.",
   },
-  {
-    n: "07",
-    title: "Jam, Connect & Celebrate",
-    desc: "After the show, everyone jams together — music, community, and growth.",
-  },
+  // {
+  //   n: "07",
+  //   title: "Jam, Connect & Celebrate",
+  //   desc: "After the show, everyone jams together — music, community, and growth.",
+  // },
 ]
 
 export function SpotlightHowItWorks() {

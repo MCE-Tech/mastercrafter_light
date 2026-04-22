@@ -1,5 +1,6 @@
 ﻿import { Header } from "../components/header";
 import { AnimatedBackground } from "../components/animated-background";
+import { useEffect } from "react";
 import { ClientsHero } from "../components/clients-hero";
 import { ClientsIntro } from "../components/clients-intro";
 import { ClientsFeatures } from "../components/clients-features";
@@ -9,6 +10,9 @@ import { ClientsFAQ } from "../components/clients-faq";
 import { ClientsCTA } from "../components/clients-cta";
 
 export default function ServicesForClientsPage() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
   return (
     // <div className="flex min-h-screen flex-col">
     //   <AnimatedBackground />

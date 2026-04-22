@@ -10,7 +10,7 @@ export default function SpotlightIndexPage() {
       <SpotlightHero />
       <SpotlightHowItWorks />
       <SpotlightCraftScore />
-      <SpotlightForWho />
+      {/* <SpotlightForWho /> */}
       <SpotlightCTA />
     </main>
   )
