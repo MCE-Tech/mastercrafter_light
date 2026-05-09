@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+      
+      # NEW STEP: Inject the allowedHosts config into vite.config.js
+      - name: Configure Vite Allowed Hosts
+        run: |
+          sed -i "s/defineConfig({/defineConfig({ server: { allowedHosts: \"beta.mastercrafters.in\", \"www.beta.mastercrafters.in\" },/" vite.config.js
 
       - name: Build
         run: |
