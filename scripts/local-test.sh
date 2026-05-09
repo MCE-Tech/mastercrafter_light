@@ -15,5 +15,12 @@ npm ci
 echo "[local-test] Building..."
 npm run build
 
-echo "[local-test] Serving build at http://localhost:${PORT} (SPA fallback enabled)"
-npx serve -s build -l "${PORT}"
+if [ "${CI:-}" = "true" ] || [ "${GITHUB_ACTIONS:-}" = "true" ]; then
+	echo "[local-test] CI mode detected — build complete, skipping local serve"
+	exit 0
+else
+	echo "[local-test] Serving build at http://localhost:${PORT} (SPA fallback enabled)"
+	npx serve -s build -l "${PORT}"
+fi
+
+
