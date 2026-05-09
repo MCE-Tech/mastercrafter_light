@@ -61,6 +61,10 @@ const parseYouTube = (raw?: string) => {
 
 export default function ArtistProfilePage() {
     const { artist } = useArtist();
+    if (typeof window !== "undefined") {
+        // eslint-disable-next-line no-console
+        console.debug("[ArtistProfilePage] mount - artist=", artist ? artist.slug : null);
+    }
     const heroRef = useRef<HTMLDivElement>(null);
     const showSticky = useShowStickyHeader(heroRef);
 
