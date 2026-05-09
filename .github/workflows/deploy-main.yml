@@ -24,7 +24,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "dist/*"
+          source: "build/*"
           # TARGET A DIFFERENT FOLDER
           target: "/home/${{ secrets.EC2_USER }}/temp-main"
           strip_components: 1
