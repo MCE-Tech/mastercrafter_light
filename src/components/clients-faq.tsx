@@ -45,7 +45,7 @@ export function ClientsFAQ() {
 
         <div className="max-w-3xl mx-auto space-y-4">
           <FAQItem
-            question="How is MCE different from traditional artist bookings?"
+            question="How is Master Crafters different from traditional artist bookings?"
             answer="Unlike traditional bookings that just connect you with artists, we provide a complete end-to-end solution. We verify all artists, handle coordination, provide backups, and ensure quality performances. Our subscription model also offers cost benefits for regular bookings and premium events."
           />
           <FAQItem

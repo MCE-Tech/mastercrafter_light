@@ -55,7 +55,7 @@ export function SpotlightForWho() {
             </blockquote>
             <Button asChild className="w-full">
               <a href="https://forms.gle/bN3naYfytBQcS5Mw5" target="_blank" rel="noopener">
-                Apply to Perform →
+                Apply to Perform
               </a>
             </Button>
           </div>

@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      # Map your build folder
+      - ./dist:/usr/share/nginx/html
+      # Map your custom NGINX config (if you have one)
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf

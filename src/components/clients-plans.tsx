@@ -25,7 +25,7 @@ export function ClientsPlans() {
                   <td className="px-6 py-4 font-semibold text-foreground">Pay-as-you-go</td>
                   <td className="px-6 py-4 text-center text-muted-foreground">One-Time Gig</td>
                   <td className="px-6 py-4 text-muted-foreground">
-                    No commitment. Test MCE's artist quality before upgrading.
+                    No commitment. Test Master Crafters' artist quality before upgrading.
                   </td>
                 </tr>
                 <tr className="bg-white/20 border-b border-border/30 hover:bg-white/50 transition-colors">

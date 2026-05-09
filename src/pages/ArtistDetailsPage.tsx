@@ -5,12 +5,17 @@ import { Badge } from "../components/ui/badge";
 import { KeyValue } from "../components/ui/key-value";
 import { Button } from "../components/ui/button";
 import { getYouTubeEmbedSrc } from "../lib/utils";
+import { Helmet } from "react-helmet-async";
 
 // note: the YouTube util was moved to lib/utils.ts to share with other
 // components.  it handles playlists, short links, etc.
 
 export default function ArtistDetailsPage() {
   const { artist, isLoading } = useArtist();
+  if (typeof window !== "undefined") {
+    // eslint-disable-next-line no-console
+    console.debug("[ArtistDetailsPage] mount - artist=", artist ? artist.slug : null, "isLoading=", isLoading);
+  }
 
   if (isLoading) {
     return (
@@ -32,9 +37,50 @@ export default function ArtistDetailsPage() {
   }
 
   const embedSrc = getYouTubeEmbedSrc(artist.youtubeVideo && artist.youtubeVideo[0]);
+  const siteOrigin = typeof window !== "undefined" ? window.location.origin : "";
+  const canonicalUrl = typeof window !== "undefined" ? window.location.href : "";
+  const shareImage = artist.image
+    ? artist.image.startsWith("http")
+      ? artist.image
+      : `${siteOrigin}${artist.image}`
+    : undefined;
+
+  // meta tags expect string content. `artist.introduction` may be JSX —
+  // extract plain text where possible and fall back to a concise summary.
+  const extractText = (node: React.ReactNode): string => {
+    if (node == null) return "";
+    if (typeof node === "string" || typeof node === "number") return String(node);
+    if (Array.isArray(node)) return node.map(extractText).join(" ");
+    // handle React elements
+    // @ts-ignore - access children dynamically
+    if (React.isValidElement(node) && (node.props as any).children) {
+      // @ts-ignore
+      return extractText((node.props as any).children);
+    }
+    return "";
+  };
+
+  const shareDescription =
+    (typeof artist.bio === "string" && artist.bio) ||
+    (artist.introduction ? extractText(artist.introduction).trim() : "") ||
+    `${artist.name} — ${artist.artistType}`;
 
   return (
     <section className="py-12 bg-background min-h-screen">
+      <Helmet>
+        <title>{`${artist.name} — ${artist.artistType}`}</title>
+        <meta name="description" content={shareDescription} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={`${artist.name} — ${artist.artistType}`} />
+        <meta property="og:description" content={shareDescription} />
+        {shareImage && <meta property="og:image" content={shareImage} />}
+        <meta property="og:url" content={canonicalUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${artist.name} — ${artist.artistType}`} />
+        <meta name="twitter:description" content={shareDescription} />
+        {shareImage && <meta name="twitter:image" content={shareImage} />}
+        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+      </Helmet>
       <div className="container mx-auto max-w-4xl px-4">
         {/* header */}
         <header className="text-center mb-8">

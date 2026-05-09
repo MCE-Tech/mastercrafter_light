@@ -1,53 +1,56 @@
-name: React Build and Deploy
+name: Scheduled Release Deployment
 
 on:
   schedule:
-    # 20:30 UTC is 02:00 IST. The '0' for day represents Sunday.
-    - cron: '30 20 * * 0'
-  workflow_dispatch: # Allows you to still run it manually for testing
+    # 10:00 PM UTC Saturday = 3:30 AM IST Sunday
+    - cron: '0 22 * * 6'
+  workflow_dispatch: # Important: This lets you test it MANUALLY first
 
 jobs:
-
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+    # Safety: Ensure this ONLY runs if the file exists on the release branch
+    if: github.ref == 'refs/heads/release'
+    
     steps:
-      - name: Checkout Custom Branch
+      - name: Checkout Release Branch
         uses: actions/checkout@v4
         with:
-          ref: 'release' 
+          ref: release
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - name: Build Code
+        run: |
+          npm install
+          npm run build
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Project
-        run: npm run build
-
-      - name: Deploy to EC2
-        uses: appleboy/scp-action@v0.1.7
+      - name: Upload to EC2
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "build/*"
-          target: "/var/www/html"
-          strip_components: 1 # Removes the 'build/' folder prefix so files land directly in /html
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "build/*" # Change to "build/*" if using React
+          target: "/home/${{ secrets.EC2_USER }}/temp-deploy"
+          strip_components: 1
 
-      - name: Execute Remote SSH Commands
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Deploy on Server
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Update both API and Auth URLs in one go
-            sed -i -e 's|WWW_URL_PLACEHOLDER|www.mastercrafters.in|g' \
-                   -e 's|URL_PLACEHOLDER|mastercrafters.in|g' \
-                   /var/www/html/vite.config.js
+            # 1. Create target dir if it doesn't exist
+            sudo mkdir -p /opt/mastercrafters.in/beta
             
-            sudo systemctl restart nginx
-
+            # 2. Clear old files to prevent conflicts
+            sudo rm -rf /opt/mastercrafters.in/beta/*
+            
+            # 3. Move new build into NGINX root
+            sudo mv /home/${{ secrets.EC2_USER }}/temp-deploy/* /opt/mastercrafters.in/beta/
+            
+            # 4. Fix permissions so NGINX can read the files
+            sudo chown -R www-data:www-data /opt/mastercrafters.in/beta
+            
+            # 5. Refresh NGINX
+            sudo systemctl reload nginx
