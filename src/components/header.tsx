@@ -337,7 +337,7 @@ export function Header() {
       )}
 
       <Dialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen}>
-          <DialogContent className="overflow-auto border-0 bg-transparent p-0 shadow-none max-w-full sm:max-w-2xl mx-3 sm:mx-auto">
+          <DialogContent className="overflow-hidden border-0 bg-transparent p-0 shadow-none max-w-full sm:max-w-2xl mx-3 sm:mx-auto">
             <div className="relative rounded-3xl bg-gradient-to-r from-primary to-secondary p-6 text-center shadow-2xl sm:p-8 md:p-12 w-full box-border">
             <div className="absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-white/10" />
             <div className="absolute bottom-0 left-0 h-24 w-24 -translate-x-12 translate-y-12 rounded-full bg-white/10" />
