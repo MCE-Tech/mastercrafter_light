@@ -40,26 +40,7 @@ export default defineConfig({
       },
     },
     */
-  ],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'), // This maps "@" to "src/"
-    },
-  },
-  server: {
-    // allowedHosts:[WWW_URL_PLACEHOLDER,URL_PLACEHOLDER],
-    port: 3000,
-    open: true,
-    host: true,
-  },
-  // Dev-only middleware: ensure SPA handles /artist/* routes even when
-  // static files exist under /public/artist. This prevents the dev server
-  // from returning a tiny static file (metadata) that does not bootstrap
-  // the React app, which caused the page to appear empty or reload.
-  // This middleware returns the project root `index.html` for artist paths.
-  // Keep it minimal and safe for local development.
-  plugins: [
-    {
+   {
       name: 'spa-artist-fallback',
       configureServer(server) {
         server.middlewares.use(async (req, res, next) => {
@@ -85,8 +66,6 @@ export default defineConfig({
         });
       },
     },
-  ],
-  plugins: [
     // dev-only middleware to serve pre-rendered artist pages from public/
     {
       name: 'serve-artist-meta',
@@ -117,6 +96,23 @@ export default defineConfig({
       },
     },
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'), // This maps "@" to "src/"
+    },
+  },
+  server: {
+    //allowedHosts
+    port: 3000,
+    open: true,
+    host: true,
+  },
+  // Dev-only middleware: ensure SPA handles /artist/* routes even when
+  // static files exist under /public/artist. This prevents the dev server
+  // from returning a tiny static file (metadata) that does not bootstrap
+  // the React app, which caused the page to appear empty or reload.
+  // This middleware returns the project root `index.html` for artist paths.
+  // Keep it minimal and safe for local development.
   build: {
     outDir: 'build',
     sourcemap: true,
