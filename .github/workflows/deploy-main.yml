@@ -16,7 +16,7 @@ jobs:
       # NEW STEP: Inject the allowedHosts config into vite.config.js
       - name: Configure Vite Allowed Hosts
         run: |
-          sed -i 's/defineConfig\s*({/defineConfig({ server: { allowedHosts: ["test.com", "www.test.com"] },/' vite.config.ts
+          sed -i 's/defineConfig\s*({/defineConfig({ server: { allowedHosts: ["beta.mastercrafters.in", "www.beta.mastercrafters.in"] },/' vite.config.ts
           
           # DEBUG: This lets you see the result in the GitHub logs
           echo "Checking vite.config.ts content:"
