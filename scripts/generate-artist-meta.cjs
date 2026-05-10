@@ -2,7 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const dataFile = path.join(__dirname, '..', 'src', 'data', 'artists.tsx');
-const outRoot = path.join(__dirname, '..', 'public', 'artist');
+// Allow overriding output base directory via CLI arg (e.g. 'build')
+const outBase = process.argv[2] || path.join(__dirname, '..', 'public');
+const outRoot = path.join(outBase, 'artist');
 
 const text = fs.readFileSync(dataFile, 'utf8');
 

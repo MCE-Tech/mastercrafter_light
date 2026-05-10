@@ -46,3 +46,24 @@ jobs:
             sudo rm -rf /opt/mastercrafters.in//main/*
             sudo mv /home/${{ secrets.EC2_USER }}/temp-main/* /opt/mastercrafters.in/main/
             sudo chown -R www-data:www-data /opt/mastercrafters.in/main/
+
+      - name: Upload nginx config
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "nginx.conf"
+          target: "/home/${{ secrets.EC2_USER }}/temp-nginx.conf"
+
+      - name: Install nginx config and reload
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo mv /home/${{ secrets.EC2_USER }}/temp-nginx.conf /etc/nginx/sites-available/beta.mastercrafters.in
+            sudo ln -sf /etc/nginx/sites-available/beta.mastercrafters.in /etc/nginx/sites-enabled/beta.mastercrafters.in
+            sudo nginx -t
+            sudo systemctl reload nginx
