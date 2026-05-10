@@ -24,8 +24,6 @@ const router = createBrowserRouter(
             <Route path='' element={<App/>}>
                   <Route path='/' element={<HomePage/>}/>
                   <Route path="/our-artists" element={<OurArtistsPage />} />
-                  <Route path="/our-services" element={<ServicesPage />} />
-                  <Route path="/our-initiative" element={<OurInitiative />} />
                   <Route path="/artist/:name" element={<ArtistProfilePage />} />
                   <Route path="/our-services/services-for-artists" element={<ServicesForArtistsPage />} />
                   <Route path="/our-services/services-for-clients" element={<ServicesForClientsPage />} />

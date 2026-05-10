@@ -337,7 +337,7 @@ export default function AddArtistPage(): JSX.Element {
               </div>
 
               <div className="md:col-span-2 p-2 rounded">
-                <label className="block text-sm font-medium mb-1">Youtube Performance Video - MCE link</label>
+                <label className="block text-sm font-medium mb-1">Youtube Performance Video - Master Crafters link</label>
                 <input name="youtubeLink" value={form.youtubeLink} onChange={handleChange} className={inputClass} placeholder="https://..." />
                 {errors.youtubeLink && <p className="text-sm text-red-500 mt-1">{errors.youtubeLink}</p>}
               </div>

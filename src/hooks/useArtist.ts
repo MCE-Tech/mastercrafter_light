@@ -9,7 +9,7 @@ interface UseArtistReturn {
 
 export function useArtist(): UseArtistReturn {
     const { name } = useParams<{ name: string }>();
-    const [isLoading, setIsLoading] = React.useState(true);
+    const [isLoading, setIsLoading] = React.useState(false);
 
     const artist = useMemo(
         () =>
@@ -19,12 +19,30 @@ export function useArtist(): UseArtistReturn {
         [name],
     );
 
-    // simulate fetching delay; remove when real API is wired up
+    // helpful debug logs while troubleshooting direct-load issues
+    if (typeof window !== "undefined") {
+        // use console.debug so it doesn't clutter production logs when filtered
+        // eslint-disable-next-line no-console
+        console.debug("[useArtist] name=", name, "artist=", artist ? artist.slug : null, "isLoading=", isLoading);
+    }
+
+    // derive loading from `name` changes. keep a tiny debounce so
+    // transitions feel smooth when switching artists client-side.
     React.useEffect(() => {
+        let id: ReturnType<typeof setTimeout> | null = null;
+        // if there's no name param we remain not-loading
+        if (!name) {
+            setIsLoading(false);
+            return;
+        }
+
         setIsLoading(true);
-        const id = setTimeout(() => setIsLoading(false), 300);
-        return () => clearTimeout(id);
-    }, [artist]);
+        id = setTimeout(() => setIsLoading(false), 150);
+
+        return () => {
+            if (id) clearTimeout(id);
+        };
+    }, [name]);
 
     return { artist, isLoading };
 }
