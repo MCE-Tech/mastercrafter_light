@@ -46,7 +46,7 @@ export function SpotlightHero() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-16">
             <Button asChild size="lg" className="text-base px-8">
               <a href="https://forms.gle/bN3naYfytBQcS5Mw5" target="_blank" rel="noopener">
-                Apply to Perform →
+                Apply to Perform
               </a>
             </Button>
             <Button asChild size="lg" className="text-base px-8">
