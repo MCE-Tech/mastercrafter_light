@@ -9,6 +9,7 @@ import VibeVedaPage from './pages/VibeVedaPage.tsx';
 import OurArtistsPage from './pages/OurArtistsPage';
 import OurInitiative from './pages/OurInitiative';
 import ArtistProfilePage from './pages/ArtistProfilePage';
+import ArtistProfileApiDataPage from './pages/ArtistProfileApiDataPage';
 import ServicesForArtistsPage from './pages/ServicesForArtistsPage';
 import ServicesForClientsPage from './pages/ServicesForClientsPage';
 import AddArtistPage from './pages/AddArtistPage';
@@ -25,12 +26,15 @@ const router = createBrowserRouter(
                   <Route path='/' element={<HomePage/>}/>
                   <Route path="/our-artists" element={<OurArtistsPage />} />
                   <Route path="/artist/:name" element={<ArtistProfilePage />} />
+                  <Route path="/artist/:craftType/:name" element={<ArtistProfileApiDataPage />} />
                   <Route path="/our-services/services-for-artists" element={<ServicesForArtistsPage />} />
                   <Route path="/our-services/services-for-clients" element={<ServicesForClientsPage />} />
                   {/* Add VibeVedaPage route */}
                   <Route path="/our-initiative/vibeveda" element={<VibeVedaPage />} />
+
                   <Route path="/our-initiative/spotlight-index" element={<SpotlightIndexPage />} />
-                  <Route path="/individual-artist/:name" element={<IndividualArtistPage />} />
+                  {/* <Route path="/individual-artist/:name" element={<IndividualArtistPage />} />
+                  <Route path="/individual-artist/:name" element={<IndividualArtistPage />} /> */}
                   {/* legacy route left in place; new simpler path below */}
                   {/* generic resume‑style details page */}
                   <Route path="/ArtistDetails/:name" element={<ArtistDetailsPage />} />
