@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react"
 import Autoplay from "embla-carousel-autoplay"
-import { Search } from "lucide-react"
+import { Guitar, Headphones, Mic, Music, Search } from "lucide-react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
 import { Button } from "./ui/button"
@@ -23,6 +23,24 @@ type ArtistOverview = {
   tags: string[]
   score?: number
   rating?: number
+}
+
+const getArtistTypeIcon = (category: string) => {
+  const normalizedCategory = category.toLowerCase()
+
+  if (normalizedCategory.includes("anchor")) {
+    return { Icon: Mic, iconClassName: "text-secondary" }
+  }
+
+  if (normalizedCategory.includes("dj")) {
+    return { Icon: Headphones, iconClassName: "text-accent" }
+  }
+
+  if (normalizedCategory.includes("instrumentalist")) {
+    return { Icon: Guitar, iconClassName: "text-primary" }
+  }
+
+  return { Icon: Music, iconClassName: "text-primary" }
 }
 
 const autoplayPlugin = Autoplay({
@@ -54,16 +72,20 @@ export function ArtistsSection() {
 
   const renderArtistCard = (artist: ArtistOverview) => {
     const category = artist.artistType ?? artist.category ?? "Artist"
+    const { Icon, iconClassName } = getArtistTypeIcon(category)
 
     return (
       <Link
         key={artist.id}
         to={`/artist/${artist.slug}`}
         aria-label={`View profile of ${artist.name}`}
-        className="group flex h-full min-h-[24rem] flex-col rounded-[1.5rem] border border-primary/10 p-3 text-left transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_-35px_rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+        className="group flex h-full min-h-[24rem] flex-col rounded-[1.5rem] border border-primary/10 bg-white p-3 text-left transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_-35px_rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
         style={{ color: "inherit" }}
       >
         <div className="relative overflow-hidden rounded-[1.25rem]">
+          <div className="absolute right-3 top-3 z-10 rounded-full bg-white/95 p-2 shadow-sm">
+            <Icon className={`h-4 w-4 ${iconClassName}`} />
+          </div>
           <img
             src={artist.image}
             alt={artist.name}
@@ -71,9 +93,21 @@ export function ArtistsSection() {
           />
         </div>
 
-        <div className="mt-3 flex min-h-[4.5rem] flex-col justify-center gap-1 text-center">
+        <div className="mt-3 flex min-h-[4.5rem] flex-col justify-center gap-1 rounded-[1rem] px-3 py-2 text-center">
+          <p className="mb-2 text-sm text-muted-foreground w-full">{category}</p>
           <h3 className="min-h-[2.75rem] text-xl font-bold leading-snug text-slate-900">{artist.name}</h3>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">{category}</p>
+          {artist.tags.length > 0 && (
+            <div className="mt-1 flex flex-wrap justify-center gap-1">
+              {artist.tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="rounded-full bg-primary/10 px-2 py-0.5 text-[14px] font-medium text-primary/80"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </Link>
     )
@@ -128,12 +162,6 @@ export function ArtistsSection() {
                 ))}
               </CarouselContent>
             </Carousel>
-
-            {!isOnOurArtistPage && filteredArtists.length > 4 && (
-              <p className="text-center text-sm text-muted-foreground">
-                More artists rotate through this row automatically while keeping spacing and card size consistent.
-              </p>
-            )}
           </div>
         ) : (
           <div className="space-y-4 py-16 text-center">
