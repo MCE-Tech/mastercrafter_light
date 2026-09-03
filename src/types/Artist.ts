@@ -6,6 +6,7 @@ export interface Artist {
     artistType: string;
     tags: string[];
     bio: string;
+    bandLineup?: { role: string; name: string }[];
     location: string;
     language: string[];
     craftType: string;

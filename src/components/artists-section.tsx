@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import { Button } from "./ui/button"
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import { ARTISTS as ALL_ARTISTS } from "@/data/artistOverview"
+import ProfileCard from "./ProfileCard"
 
 type LocationState = {
   ourArtistPage?: boolean
@@ -75,41 +76,42 @@ export function ArtistsSection() {
     const { Icon, iconClassName } = getArtistTypeIcon(category)
 
     return (
-      <Link
-        key={artist.id}
-        to={`/artist/${artist.slug}`}
-        aria-label={`View profile of ${artist.name}`}
-        className="group flex h-full min-h-[24rem] flex-col rounded-[1.5rem] border border-primary/10 bg-white p-3 text-left transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_-35px_rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
-        style={{ color: "inherit" }}
-      >
-        <div className="relative overflow-hidden rounded-[1.25rem]">
-          <div className="absolute right-3 top-3 z-10 rounded-full bg-white/95 p-2 shadow-sm">
-            <Icon className={`h-4 w-4 ${iconClassName}`} />
-          </div>
-          <img
-            src={artist.image}
-            alt={artist.name}
-            className="h-52 w-full object-cover object-center transition duration-500 group-hover:scale-105"
-          />
-        </div>
+      <ProfileCard artist={artist} />
+      // <Link
+      //   key={artist.id}
+      //   to={`/artist/${artist.slug}`}
+      //   aria-label={`View profile of ${artist.name}`}
+      //   className="group flex h-full min-h-[24rem] flex-col rounded-[1.5rem] border border-primary/10 bg-white p-3 text-left transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_-35px_rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+      //   style={{ color: "inherit" }}
+      // >
+      //   <div className="relative overflow-hidden rounded-[1.25rem]">
+      //     <div className="absolute right-3 top-3 z-10 rounded-full bg-white/95 p-2 shadow-sm">
+      //       <Icon className={`h-4 w-4 ${iconClassName}`} />
+      //     </div>
+      //     <img
+      //       src={artist.image}
+      //       alt={artist.name}
+      //       className="h-52 w-full object-cover object-center transition duration-500 group-hover:scale-105"
+      //     />
+      //   </div>
 
-        <div className="mt-3 flex min-h-[4.5rem] flex-col justify-center gap-1 rounded-[1rem] px-3 py-2 text-center">
-          <p className="mb-2 text-sm text-muted-foreground w-full">{category}</p>
-          <h3 className="min-h-[2.75rem] text-xl font-bold leading-snug text-slate-900">{artist.name}</h3>
-          {artist.tags.length > 0 && (
-            <div className="mt-1 flex flex-wrap justify-center gap-1">
-              {artist.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="rounded-full bg-primary/10 px-2 py-0.5 text-[14px] font-medium text-primary/80"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      </Link>
+      //   <div className="mt-3 flex min-h-[4.5rem] flex-col justify-center gap-1 rounded-[1rem] px-3 py-2 text-center">
+      //     <p className="mb-2 text-sm text-muted-foreground w-full">{category}</p>
+      //     <h3 className="min-h-[2.75rem] text-xl font-bold leading-snug text-slate-900">{artist.name}</h3>
+      //     {artist.tags.length > 0 && (
+      //       <div className="mt-1 flex flex-wrap justify-center gap-1">
+      //         {artist.tags.map((tag, index) => (
+      //           <span
+      //             key={index}
+      //             className="rounded-full bg-primary/10 px-2 py-0.5 text-[14px] font-medium text-primary/80"
+      //           >
+      //             {tag}
+      //           </span>
+      //         ))}
+      //       </div>
+      //     )}
+      //   </div>
+      // </Link>
     )
   }
 
@@ -150,12 +152,16 @@ export function ArtistsSection() {
               opts={{ align: "start", loop: filteredArtists.length > 3 }}
               plugins={[autoplayPlugin]}
             >
-              <CarouselContent className="-ml-2 md:-ml-3" data-testid="artists-row-track">
+              <CarouselContent
+                className="-ml-2 md:-ml-3"
+                viewportClassName="-m-6 p-6"
+                data-testid="artists-row-track"
+              >
                 {filteredArtists.map((artist) => (
                   <CarouselItem
                     key={artist.id}
                     data-testid="artist-row-slide"
-                    className="pl-2 md:pl-3 basis-[86%] sm:basis-[64%] md:basis-[48%] lg:basis-[32%] xl:basis-[24%]"
+                    className="relative pl-2 md:pl-3 basis-[86%] sm:basis-[64%] md:basis-[48%] lg:basis-[32%] xl:basis-[24%] hover:z-10"
                   >
                     {renderArtistCard(artist)}
                   </CarouselItem>

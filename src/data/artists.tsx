@@ -7,6 +7,7 @@ import gaurangSahu from "../assets/images/gaurang-sahu.png";
 import humraag from "../assets/images/humraag.png";
 import rishabhSighBisht from "../assets/images/rishabh-singh-bisht.jpg";
 import prateekAggarwal from "../assets/images/prateek-aggarwal.jpg";
+import vickyMelophile from "../assets/images/vickyMelophile.jpeg";
 
 const artistsData: Artist[] = [
     {
@@ -90,26 +91,33 @@ const artistsData: Artist[] = [
         image: humraag,
         instruments: [],
         artistType: "Musician/Band",
-        tags: ["Guitarist", "Singer", "Band"],
+        tags: ["Devotional","Sufi","Bollywood","+4"],
         bio: "Humraag is a charismatic host and anchor, bringing energy and professionalism to every event.",
         location: "Delhi NCR",
         language: ["Hindi", "English"],
-        craftType: "Musician/Anchor",
+        craftType: "Musician/Band",
         musicianType: ["Singer", "Guitarist","Drummer"],
         performanceType: ["Solo","Duo","Trio","Band"],
-        genre: ["Devotional","Sufi","Bollywood","Patriotric"],
+        genre: ["Devotional","Sufi","Bollywood","Patriotric","Fold", "Ghazal","Light Music"],
         craftScore: 88.05,
         lastModified: "2025-09-28",
         verificationDate: "2025-05-05",
-        youtubeVideo : ["83xk79cTFWw","b5b6lIhIb48","RKcKeXMG-EM"],
+        youtubeVideo : ["RKcKeXMG-EM","b5b6lIhIb48","_GXXqDCX5NQ"],
         introduction: (
             <>
                 <p>
-                    Humraag is a sought-after anchor and host, known for making
-                    every event memorable with wit and charm.
+                  Humraag is a passionate <b>Hindi fusion band</b> with over <b>5 years of live performance experience</b>, rooted in Delhi NCR and known for <b>heartfelt, crowd-aware performances</b> blending vocals, guitar, keys, percussion, and drums.
+                  <br/>
+                  Inspired by <b>Mohammed Rafi</b> and <b>Ghulam Ali</b>, the band brings old-world soul with a contemporary touch. Their performances span <b>festivals, cafés, cultural events,</b> and celebrations across <b>Lucknow, Agra, Shimla,</b> and beyond.
                 </p>
             </>
         ),
+        bandLineup: [
+            { role: "Lead Vocalist & Guitaris", name: "Himanshu Rana" },
+            { role: "Guitarist & Backing Vocals", name: "Faizan" },
+            { role: "Keyboardist", name: "Chirodeep" },
+            { role: "Drummer & Percussionist", name: "Gaurav" },
+        ],
         whyBook: [
             "Strong synergy and audience-first approach",
             "Versatile sound with Hindi fusion and emotional depth",
@@ -187,6 +195,50 @@ const artistsData: Artist[] = [
     ],
     youtubePlaylist:"PLoganb-r1cCJ2CDzCqnL4xYVpDbK1NIjr"
   },
+  {
+    id: 6,
+    name: "Vicky Melophile",
+    slug: "vicky-melophile",
+    image: vickyMelophile,
+    instruments: ["Guitar"],
+    artistType: "Musician/Singer",
+    tags: ["Bollywood Covers",
+      "Light Music",
+      "Folk","+3"],
+    bio: "Singer-guitarist performing Bollywood, Ghazal, and Sufi",
+    location: "Rishikesh, Uttrakhand",
+    language: ["English", "Hindi"],
+    craftType: "Musicians/Singer",
+    musicianType: ["Singer", "Guitarist"],
+    performanceType: ["Solo", "Duo", "Trio","Band"],
+    youtubeVideo : ["p09YgAQQFyE","vvohAYVAjsk","6ePBkWSa2IU"],
+    genre: [
+      "Bollywood Covers",
+      "Light Music",
+      "Folk",
+      "Sufi",
+      "Devotional",
+      "Semi Classical",
+    ],
+    craftScore: -1,
+    lastModified: "2025-09-27T19:10:00",
+    verificationDate: "2025-05-05",
+    introduction: (
+      <>
+        <p>
+          <b>Vicky Melophile</b> is a soulful solo acoustic artist with over <b>6 years of live experience</b>, known for expressive vocals, skilled guitar playing, and natural audience interaction. He primarily performs across <b>Rishikesh and Dehradun</b>.
+          <br/>
+          His repertoire spans <b>Bollywood, light music, Sufi/Folk, devotional, and semi-classical music</b> in Hindi and English. A regular at goSTOPS, he creates intimate, engaging experiences for diverse events and audiences.
+        </p>
+      </>
+    ),
+    whyBook: [
+      "Soulful vocals & expressive acoustic guitar",
+      "Strong audience connection with an engaging performance style",
+      "Versatile repertoire suited for cafés, weddings, corporates, hotels, private events & festivals"
+    ],
+    youtubePlaylist:"PLWewBYm-PopY"
+  }
 ];
 
 export default artistsData;

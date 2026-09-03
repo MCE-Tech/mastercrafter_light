@@ -4,6 +4,7 @@ import gaurangSahu from "../assets/images/gaurang-sahu.png";
 import humraag from "../assets/images/humraag.png";
 import rishabhSighBisht from "../assets/images/rishabh-singh-bisht.jpg";
 import prateekAggarwal from "../assets/images/prateek-aggarwal.jpg";
+import vickyMelophile from "../assets/images/vickyMelophile.jpeg";
 
 export const ARTISTS: any[] = [
   {
@@ -49,6 +50,15 @@ export const ARTISTS: any[] = [
     image: anchorAishwarya,
     artistType: "Anchor",
     tags: ["Host", "Anchor", "Events"],
+    score: 0,
+  },
+  {
+    id: 6,
+    name: "Vicky Melophile",
+    slug: "vicky-melophile",
+    image: vickyMelophile,
+    artistType: "Musician/Band",
+    tags: ["Singer", "Guitarist", "Band"],
     score: 0,
   },
   // Add more artists as needed

@@ -21,6 +21,9 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
             >
                 {artist.name}
             </h1>
+            <p className="artist-profile-type m-auto mb-4 md:mb-2 text-lg text-muted-foreground">
+                {artist.artistType}
+            </p>
             <div className="artist-profile-tags m-auto flex flex-wrap gap-2 justify-center md:justify-start mb-4 md:mb-2">
                 {artist.tags.map((tag) => (
                     <span
@@ -31,9 +34,6 @@ export default function ArtistIntro({ artist }: Readonly<ArtistIntroProps>) {
                     </span>
                 ))}
             </div>
-            <p className="artist-profile-type m-auto mb-4 md:mb-2 text-lg text-muted-foreground">
-                {artist.artistType}
-            </p>
 
             {/* Action Buttons */}
             <style>{`

@@ -85,7 +85,7 @@ function BasicInfoTab({ artist }: Readonly<{ artist: Artist }>) {
                 </div> */}
 
                 {/* Info pills grid */}
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-2 text-left">
+                <div className="grid sm:grid-cols-1 md:grid-cols-1 gap-2 text-left">
                     {[
                         { icon: "⭐", label: "Craft Score", value: artist.craftScore != null && artist.craftScore >= 0 ? artist.craftScore.toFixed(1) : undefined },
                         { icon: "🎭", label: "Craft", value: artist.craftType },
@@ -117,6 +117,8 @@ function BasicInfoTab({ artist }: Readonly<{ artist: Artist }>) {
 }
 
 function MoreDetailsTab({ artist }: Readonly<{ artist: Artist }>) {
+    const bandLineup = artist.bandLineup?.filter(({ name, role }) => name || role);
+
     return (
         <div className="flex flex-col h-full overflow-hidden">
             {/* Sub-header */}
@@ -145,28 +147,64 @@ function MoreDetailsTab({ artist }: Readonly<{ artist: Artist }>) {
                     <div className="flex-1 h-px bg-purple-100" />
                 </div>
 
-                {/* Why Book section */}
-                <div>
-                    <div className="flex items-center gap-2 mb-3">
-                        {/* <div className="w-7 h-7 rounded-full bg-amber-50 flex items-center justify-center text-sm shrink-0">
-                            
-                        </div> */}
-                        <h3 className="text-base font-bold text-primary text-left m-0">
-                            💡 Why your guests will love {artist.name}?
-                        </h3>
-                    </div>
+                <div className={bandLineup && bandLineup.length > 0 ? "grid gap-5 lg:grid-cols-2" : ""}>
+                    {bandLineup && bandLineup.length > 0 && (
+                        <div>
+                            <div className="flex items-center gap-2 mb-3">
+                                <h3 className="text-base font-bold text-primary text-left m-0">
+                                    🎵 Band Line-up
+                                </h3>
+                            </div>
 
-                    <ul className="space-y-2">
-                        {artist.whyBook.map((reason) => (
-                            <li
-                                key={reason}
-                                className="flex items-start gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 bg-white/70 border border-purple-50 shadow-sm"
-                            >
-                                <span className="text-primary font-bold mt-0.5 shrink-0">✓</span>
-                                <span className="leading-snug text-justify">{reason}</span>
-                            </li>
-                        ))}
-                    </ul>
+                            <ul className="space-y-2">
+                                {bandLineup.map(({ role, name }) => (
+                                    <li
+                                        key={`${role}-${name}`}
+                                        className="flex items-start gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 bg-white/70 border border-purple-50 shadow-sm"
+                                    >
+                                        <span className="text-primary font-bold mt-0.5 shrink-0">•</span>
+                                        <span className="leading-snug">
+                                            {role && <span className="font-semibold">{name}</span>}
+                                            {role && name && <span>: </span>}
+                                            {role}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {bandLineup && bandLineup.length > 0 && (
+                        <div className="flex items-center gap-2 lg:hidden">
+                            <div className="flex-1 h-px bg-purple-100" />
+                            <span className="text-purple-300 text-xs">✦</span>
+                            <div className="flex-1 h-px bg-purple-100" />
+                        </div>
+                    )}
+
+                    {/* Why Book section */}
+                    <div>
+                        <div className="flex items-center gap-2 mb-3">
+                            {/* <div className="w-7 h-7 rounded-full bg-amber-50 flex items-center justify-center text-sm shrink-0">
+                                
+                            </div> */}
+                            <h3 className="text-base font-bold text-primary text-left m-0">
+                                💡 Why your guests will love {artist.name}?
+                            </h3>
+                        </div>
+
+                        <ul className="space-y-2">
+                            {artist.whyBook.map((reason) => (
+                                <li
+                                    key={reason}
+                                    className="flex items-start gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 bg-white/70 border border-purple-50 shadow-sm"
+                                >
+                                    <span className="text-primary font-bold mt-0.5 shrink-0">✓</span>
+                                    <span className="leading-snug text-justify">{reason}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
