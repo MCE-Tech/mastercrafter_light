@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs';
 
 export default defineConfig({
+  base:'/mastercrafter_light/',
   plugins: [
     react(),
     // Dev middleware to serve pre-rendered artist pages is commented out
