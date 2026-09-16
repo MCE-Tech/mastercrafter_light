@@ -1,23 +1,23 @@
 const highlights = [
   {
     icon: "✨",
-    title: "Conscious Curation",
-    desc: "A handpicked lineup of emerging and seasoned voices — no filler, just extraordinary art.",
+    title: "A Stage That Listens",
+    desc: "Share your craft in a room built for attention, appreciation, and genuine artistic presence.",
   },
   {
     icon: "🤝",
-    title: "Real Community",
-    desc: "Connect with like-minded creatives who live and breathe artistic expression.",
+    title: "Creative Connections",
+    desc: "Meet collaborators, fellow voices, and kindred spirits who understand the courage behind expression.",
   },
   {
     icon: "🎶",
-    title: "Spontaneous Jams",
-    desc: "Every night ends with a jam session where the audience becomes the stage.",
+    title: "Unforgettable Live Energy",
+    desc: "Experience music, poetry, comedy, movement, and moments that feel raw, real, and alive.",
   },
   {
     icon: "🌱",
-    title: "Safe Expression",
-    desc: "Raw, honest, unfiltered — a space where your voice is heard without judgment.",
+    title: "A Night to Belong",
+    desc: "Come for the performances and stay for the warmth, shared stories, and spontaneous community jams.",
   },
 ]
 

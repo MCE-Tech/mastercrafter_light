@@ -12,8 +12,8 @@ import vickyMelophile from "../assets/images/vickyMelophile.jpeg";
 const artistsData: Artist[] = [
     {
         id: 1,
-        name: "Aishwarya Sharma",
-        slug: "aishwarya-sharma",
+        name: "Anchor Aishwarya",
+        slug: "anchor-aishwarya",
         image: anchorAishwarya,
         artistType: "Anchor",
         tags: ["Anchor", "Host", "Events"],
@@ -51,9 +51,9 @@ const artistsData: Artist[] = [
         name: "Gaurang Sahu",
         slug: "gaurang-sahu",
         image: gaurangSahu,
-        instruments: ["Flute", "Guitar", "Cajon", "Didgeridoo"],
+        instruments: ["Flute", "Guitar", "Cajon", "Beatboxing", "Didgeridoo"],
         artistType: "Musician/Instrumentalist",
-        tags: ["Flutist", "Guitarist", "Multi-instrumentalist"],
+        tags: ["Flute", "Guitar", "Cajon","+2"],
         bio: "Gaurang is a talented guitarist and composer, known for his energetic live performances and original compositions.",
         location: "Delhi, India",
         language: ["Hindi", "English"],

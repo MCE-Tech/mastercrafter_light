@@ -43,6 +43,9 @@ export default function HomePage() {
       </div>
       <main className="flex-1">
         <Hero />
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-20">
+          <ArtistsSection />
+        </div>
         <VisionMission />
         <CoreValues />
         <div id="our-initiatives">
@@ -50,9 +53,6 @@ export default function HomePage() {
         </div>
         <div id="our-services">
           <ServicesSection showSkew={true} />
-        </div>
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-20">
-          <ArtistsSection />
         </div>
         <div id="contact-us">
           <CTASection />

@@ -24,11 +24,13 @@ const getArtistIcon = (artistType: string, tags: string[] = []) => {
   const normalizedArtistInfo = [artistType, ...tags].join(" ").toLowerCase();
 
   if (normalizedArtistInfo.includes("instrumentalist")) {
-    return Guitar;
+    return Music;
+    //return Guitar;
   }
 
   if (normalizedArtistInfo.includes("band")) {
-    return drumsIcon;
+    return Music;
+    //return drumsIcon;
   }
 
   if (normalizedArtistInfo.includes("singer")) {
