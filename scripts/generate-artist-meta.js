@@ -77,8 +77,7 @@ rawItems.forEach((item) => {
     <link rel="canonical" href="/artist/${slug}" />
   </head>
   <body>
-    <p>Redirecting to artist page…</p>
-    <script>location.href = '/artist/${slug}';</script>
+    <p>Artist profile metadata for <a href="/artist/${slug}">${name}</a>.</p>
   </body>
 </html>`;
 

@@ -94,7 +94,10 @@ function BasicInfoTab({ artist }: Readonly<{ artist: Artist }>) {
                         { icon: "🎵", label: "Genre", value: artist.genre?.join(", ") },
                         { icon: "📍", label: "Location", value: artist.location },
                         { icon: "🌐", label: "Languages", value: artist.language?.join(", ") },
-                    ].filter(item => item.value).map(({ icon, label, value }) => (
+                    ].filter(item => item.value).map(({ icon, label, value }) => {
+                        const shouldWrapValue = label === "Genre";
+
+                        return (
                         <div
                             key={label}
                             className="flex items-start gap-2 bg-white/70 border border-purple-50 rounded-lg px-3 py-2 shadow-sm"
@@ -104,12 +107,13 @@ function BasicInfoTab({ artist }: Readonly<{ artist: Artist }>) {
                                 <p className="text-[10px] text-gray-400 font-medium uppercase tracking-wide m-0 leading-tight">
                                     {label}
                                 </p>
-                                <p className="text-xs font-semibold text-gray-700 m-0 leading-snug truncate">
+                                <p className={`text-xs font-semibold text-gray-700 m-0 leading-snug ${shouldWrapValue ? "whitespace-normal break-words" : "truncate"}`}>
                                     {value}
                                 </p>
                             </div>
                         </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </div>

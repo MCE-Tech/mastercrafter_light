@@ -26,7 +26,7 @@ export function VibeVedaCTA() {
                     target="_blank"
                     rel="noopener"
                   >
-                    📸 Instagram
+                    <i className="fa-brands fa-instagram" aria-hidden="true" /> Instagram
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="sm">
@@ -35,7 +35,7 @@ export function VibeVedaCTA() {
                     target="_blank"
                     rel="noopener"
                   >
-                    ▶️ YouTube
+                    <i className="fa-brands fa-youtube" aria-hidden="true" /> YouTube
                   </a>
                 </Button>
               </div>

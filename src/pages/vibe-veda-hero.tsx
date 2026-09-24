@@ -1,5 +1,3 @@
-import { Button } from "../components/ui/button"
-
 const artForms = [
   { icon: "🎸", label: "Music" },
   { icon: "🎤", label: "Poetry" },
@@ -41,17 +39,6 @@ export function VibeVedaHero() {
             <span className="text-foreground font-medium">pure magic.</span>
           </p>
 
-          {/* CTAs */}
-          {/* <div className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
-            <Button asChild size="lg" className="text-base px-8">
-              <a href="https://forms.gle/bN3naYfytBQcS5Mw5" target="_blank" rel="noopener">
-                Apply to Perform →
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" className="text-base px-8">
-              Attend an Edition
-            </Button>
-          </div> */}
 
           {/* Art form tags */}
           <div className="flex flex-wrap gap-2 justify-center">
