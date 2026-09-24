@@ -40,7 +40,12 @@ export const ARTISTS: any[] = [
     slug: "prateek-aggarwal",
     image: prateekAggarwal,
     artistType: "Singer",
-    tags: ["Bollywood", "Light Music", "Ghazal", "+3"],
+    tags: [
+      "Bollywood Covers",
+      "Light Music",
+      "Devotional",
+      "+4",
+    ],
     score: 68,
   },
   {
