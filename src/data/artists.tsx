@@ -8,6 +8,7 @@ import humraag from "../assets/images/humraag.png";
 import rishabhSighBisht from "../assets/images/rishabh-singh-bisht.jpg";
 import prateekAggarwal from "../assets/images/prateek-aggarwal.jpg";
 import vickyMelophile from "../assets/images/vickyMelophile.jpeg";
+import aayan from "../assets/images/aayan.png";
 
 const artistsData: Artist[] = [
     {
@@ -250,6 +251,49 @@ const artistsData: Artist[] = [
       "Versatile repertoire suited for cafés, weddings, corporates, hotels, private events & festivals"
     ],
     youtubePlaylist:"PLWewBYm-PopY"
+  },
+  {
+    id: 7,
+    name: "Aayan",
+    slug: "aayan",
+    image: aayan,
+    instruments: ["Guitar"],
+    artistType: "Musician/Singer",
+    tags: [
+      "Bollywood Covers",
+      "Light Music",
+      "Semi-Classical",
+    ],
+    bio: "Singer-guitarist performing Bollywood, Ghazal, and Sufi",
+    location: "Delhi NCR",
+    language: ["English", "Hindi"],
+    craftType: "Musicians/Singer",
+    musicianType: ["Singer", "Guitarist"],
+    performanceType: ["Solo", "Duo"],
+    youtubeVideo : ["L4MO2iEwkNg","9plU-zfUgA4","mNQCUVYK5x0"],
+    genre: [
+      "Bollywood Covers",
+      "Light Music",
+      "Semi-Classical",
+    ],
+    craftScore: -1,
+    lastModified: "2025-09-27T19:10:00",
+    verificationDate: "2025-05-05",
+    introduction: (
+      <>
+        <p>
+          <b>Aayan</b> is a singer and guitarist with over <b>2 years of live performance experience</b>, bringing soulful vocals, stage presence, and engaging audience interaction to his performances across Delhi NCR.
+          <br/>
+          His repertoire spans <b>Bollywood, light music, Sufi/Folk, devotional, and semi-classical music</b> in Hindi and English. A regular at goSTOPS, he creates intimate, engaging experiences for diverse events and audiences.
+        </p>
+      </>
+    ),
+    whyBook: [
+      "Soulful vocals & acoustic guitar with an energetic stage presence",
+      "Unique Song selections spanning Bollywood, light music & semi-classical",
+      "Flexible performance formats, from solo acoustic sets to full-band experiences"
+    ],
+    youtubePlaylist:"PLMRgEv5Eeua0"
   }
 ];
 

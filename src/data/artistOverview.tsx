@@ -5,6 +5,7 @@ import humraag from "../assets/images/humraag.png";
 import rishabhSighBisht from "../assets/images/rishabh-singh-bisht.jpg";
 import prateekAggarwal from "../assets/images/prateek-aggarwal.jpg";
 import vickyMelophile from "../assets/images/vickyMelophile.jpeg";
+import aayan from "../assets/images/aayan.png";
 
 export const ARTISTS: any[] = [
   {
@@ -66,5 +67,14 @@ export const ARTISTS: any[] = [
     tags: ["Bollywood Covers", "Light Music", "Folk","+3"],
     score: 0,
   },
+  {
+    id: 7,
+    name: "Aayan",
+    slug: "aayan",
+    image: aayan,
+    artistType: "Singer",
+    tags: ["Bollywood Covers", "Light Music", "Semi-Classical"],
+    score: 0,
+  }
   // Add more artists as needed
 ];
